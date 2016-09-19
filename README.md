@@ -1,4 +1,5 @@
-# TODO
+NewsScraper API
+---
 
 1. [x] models and controllers
 2. [x] api auth
