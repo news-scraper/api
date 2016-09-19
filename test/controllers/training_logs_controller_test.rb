@@ -6,23 +6,26 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get training_logs_url(format: :json)
+    get training_logs_url(format: :json), headers: authorized_headers
     assert_response :success
   end
 
   test "should get show" do
-    get training_log_url(id: @untrained_training_log.id, format: :json)
+    get training_log_url(id: @untrained_training_log.id, format: :json), headers: authorized_headers
     assert_response :success
   end
 
   test "should get by_root_domain" do
-    get training_log_by_domain_url(root_domain: @untrained_training_log.root_domain, format: :json)
+    get training_log_by_domain_url(root_domain: @untrained_training_log.root_domain, format: :json),
+      headers: authorized_headers
     assert_response :success
   end
 
   test "should create training_log" do
     assert_difference('TrainingLog.count') do
-      post training_logs_url(format: :json), params: { training_log: { root_domain: 'test_query', uri: 'uri' } }
+      post training_logs_url(format: :json),
+        params: { training_log: { root_domain: 'test_query', uri: 'uri' } },
+        headers: authorized_headers
     end
 
     assert_response 201
@@ -31,7 +34,9 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   test "should claim training_logs" do
     assert_difference('TrainingLog.untrained.count', -1) do
       assert_difference('TrainingLog.claimed.count') do
-        post claim_training_logs_url(format: :json), params: { root_domain: @untrained_training_log.root_domain }
+        post claim_training_logs_url(format: :json),
+          params: { root_domain: @untrained_training_log.root_domain },
+          headers: authorized_headers
       end
     end
     assert_response :success
@@ -40,7 +45,9 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   test "should unclaim training_logs" do
     assert_difference('TrainingLog.claimed.count', -1) do
       assert_difference('TrainingLog.untrained.count') do
-        post unclaim_training_logs_url(format: :json), params: { root_domain: training_logs(:claimed).root_domain }
+        post unclaim_training_logs_url(format: :json),
+          params: { root_domain: training_logs(:claimed).root_domain },
+          headers: authorized_headers
       end
     end
     assert_response :success
@@ -49,7 +56,9 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   test "should train training_logs" do
     assert_difference('TrainingLog.claimed.count', -1) do
       assert_difference('TrainingLog.trained.count') do
-        post train_training_logs_url(format: :json), params: { root_domain: training_logs(:claimed).root_domain }
+        post train_training_logs_url(format: :json),
+          params: { root_domain: training_logs(:claimed).root_domain },
+          headers: authorized_headers
       end
     end
     assert_response :success

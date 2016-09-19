@@ -2,6 +2,12 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  fixtures :all
+module ActiveSupport
+  class TestCase
+    fixtures :all
+
+    def authorized_headers
+      { 'Authorization' => "Token token=#{users(:one).api_key}" }
+    end
+  end
 end

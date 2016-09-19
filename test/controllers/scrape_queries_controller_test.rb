@@ -6,13 +6,15 @@ class ScrapeQueriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get scrape_queries_url(format: :json)
+    get scrape_queries_url(format: :json), headers: authorized_headers
     assert_response :success
   end
 
   test "should create scrape_query" do
     assert_difference('ScrapeQuery.count') do
-      post scrape_queries_url(format: :json), params: { scrape_query: { query: 'test_query' } }
+      post scrape_queries_url(format: :json),
+        params: { scrape_query: { query: 'test_query' } },
+        headers: authorized_headers
     end
 
     assert_response 201
@@ -20,7 +22,7 @@ class ScrapeQueriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy scrape_query" do
     assert_difference('ScrapeQuery.count', -1) do
-      delete scrape_query_url(@scrape_query, format: :json)
+      delete scrape_query_url(@scrape_query, format: :json), headers: authorized_headers
     end
 
     assert_response 204

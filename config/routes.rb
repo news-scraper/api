@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope format: true, constraints: { format: 'json' } do
-    resources :scrape_queries
+    resources :scrape_queries, except: :update
     resources :domains
 
     controller :news_articles do
