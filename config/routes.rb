@@ -1,4 +1,4 @@
-Rails.application.routes.draw do 
+Rails.application.routes.draw do
   scope format: true, constraints: { format: 'json' } do
     resources :scrape_queries
     resources :domains
