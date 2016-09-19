@@ -31,3 +31,16 @@ queries.each do |query|
     )
   end
 end
+
+data_types = NewsScraper.configuration.scrape_patterns['data_types']
+%w(shopify.ca).each do |domain|
+  puts "Making a domain entry for #{domain}"
+  domain = Domain.create(root_domain: domain)
+  data_types.each do |data_type|
+    domain.domain_entries.create(
+      data_type: data_type,
+      method: 'css',
+      pattern: '.div'
+    )
+  end
+end

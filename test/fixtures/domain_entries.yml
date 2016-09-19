@@ -1,0 +1,84 @@
+author_one:
+  data_type: author
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+body_one:
+  data_type: body
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+description_one:
+  data_type: description
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+keywords_one:
+  data_type: keywords
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+section_one:
+  data_type: section
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+datetime_one:
+  data_type: datetime
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+title_one:
+  data_type: title
+  method: 'css'
+  pattern: '.div'
+  domain: one
+
+author_two:
+  data_type: author
+  method: 'css'
+  pattern: '.div'
+  domain: two
+
+body_two:
+  data_type: body
+  method: 'css'
+  pattern: '.div'
+  domain: two
+
+description_two:
+  data_type: description
+  method: 'css'
+  pattern: '.div'
+  domain: two
+
+keywords_two:
+  data_type: keywords
+  method: 'css'
+  pattern: '.div'
+  domain: two
+
+section_two:
+  data_type: section
+  method: 'css'
+  pattern: '.div'
+  domain: two
+
+datetime_two:
+  data_type: datetime
+  method: 'css'
+  pattern: '.div'
+  domain: two
+
+title_two:
+  data_type: title
+  method: 'css'
+  pattern: '.div'
+  domain: two
+

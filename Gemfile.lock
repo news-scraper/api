@@ -1,8 +1,9 @@
 GIT
   remote: git@github.com:richardwu/news_scraper.git
-  revision: d9f8be7f8965529a040a27cb57f92884aee90a97
+  revision: 97326350cc21df124e9dc1c90bbc380ba51f522e
+  branch: configuration
   specs:
-    news_scraper (0.1.2)
+    news_scraper (0.1.0)
       htmlbeautifier (~> 1.1, >= 1.1.1)
       httparty (~> 0.14, >= 0.14.0)
       nokogiri (~> 1.6, >= 1.6.8)
@@ -52,6 +53,7 @@ GEM
     arel (7.1.2)
     builder (3.2.2)
     byebug (9.0.5)
+    coderay (1.1.1)
     concurrent-ruby (1.0.2)
     crass (1.0.2)
     ejson (1.0.1)
@@ -90,6 +92,13 @@ GEM
       nokogiri
     pg (0.18.4)
     pkg-config (1.1.7)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -128,6 +137,7 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4.1)
+    slop (3.6.0)
     spring (1.7.2)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
@@ -151,12 +161,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
   ejson
   jbuilder (~> 2.5)
   listen (~> 3.0.5)
   news_scraper!
   pg
+  pry-byebug
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   spring

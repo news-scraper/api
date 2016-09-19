@@ -4,11 +4,11 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
-gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git'
+gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'configuration'
 gem 'ejson'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'pry-byebug'
 end
 
 group :development do

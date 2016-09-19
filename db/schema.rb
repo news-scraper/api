@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919011659) do
+ActiveRecord::Schema.define(version: 20160919055339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "domain_entries", force: :cascade do |t|
+    t.string   "data_type",  null: false
+    t.string   "method",     null: false
+    t.string   "pattern",    null: false
+    t.integer  "domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_domain_entries_on_domain_id", using: :btree
+  end
+
+  create_table "domains", force: :cascade do |t|
+    t.string   "root_domain", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "news_articles", force: :cascade do |t|
     t.string   "author"

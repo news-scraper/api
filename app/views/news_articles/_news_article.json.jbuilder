@@ -8,7 +8,6 @@ json.extract! news_article,
   :datetime,
   :title,
   :root_domain,
-  :uri
-json.extract! news_article,
+  :uri,
   :created_at,
   :updated_at
