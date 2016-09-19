@@ -1,6 +1,8 @@
 NewsScraper API
 ---
 
+[![CircleCI](https://circleci.com/gh/news-scraper/api/tree/master.svg?style=svg)](https://circleci.com/gh/news-scraper/api/tree/master)
+
 1. [x] models and controllers
 2. [x] api auth
 3. [x] define scrape patterns for domains in the DB
