@@ -1,0 +1,24 @@
+default: &default
+  endpoint: 'https://acme-v01.api.letsencrypt.org/'
+  email: 'julian@jnadeau.ca'
+  domain: 'news-scraper.jnadeau.ca'
+
+  # in Rails.root, path to private key
+  private_key: 'config/ssl/keyfile.pem'
+
+  # in Rails.root, path where certificates
+  # will be stored (on Heroku this variable is ignored)
+  output_cert_dir: 'config/ssl'
+
+  # in Rails.root, path where challenge token
+  # will be stored in case when DB will not be used
+  challenge_dir_name: 'config/ssl/challenge'
+
+production:
+  <<: *default
+
+development:
+  <<: *default
+
+test:
+  <<: *default

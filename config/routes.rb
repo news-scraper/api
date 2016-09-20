@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetsencryptPlugin::Engine, at: '/'
+
   scope format: true, constraints: { format: 'json' } do
     resources :scrape_queries, except: :update
     resources :domains

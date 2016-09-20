@@ -9,6 +9,8 @@ gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'y
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+gem 'letsencrypt_plugin'
+
 group :development, :test do
   gem 'pry-byebug'
 end

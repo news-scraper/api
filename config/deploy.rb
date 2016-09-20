@@ -70,6 +70,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      Rake::Task["puma:restart"].reenable
       invoke 'puma:restart'
     end
   end
@@ -77,19 +78,4 @@ namespace :deploy do
   before :starting, :check_revision
   after :finishing,    :cleanup
   after :finishing,    :restart
-end
-
-namespace :ssl do
-  desc 'renew SSL'
-  task :renew do
-    on roles(:app) do
-      within current_path do
-        with rails_env: :production do
-          rake "ssl:renew"
-          puts "Restarting nginx"
-          execute :sudo, "service nginx restart"
-        end
-      end
-    end
-  end
 end
