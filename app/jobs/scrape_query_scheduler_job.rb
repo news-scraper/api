@@ -3,7 +3,7 @@ class ScrapeQuerySchedulerJob < ApplicationJob
 
   def perform(*_args)
     ScrapeQuery.all.each do |scrape_query|
-      ScrapeJob.perform_later(query: scrape_query.query)
+      ScraperJob.perform_later(query: scrape_query.query)
     end
   end
 end

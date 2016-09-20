@@ -3,13 +3,15 @@ class ScraperJob < ApplicationJob
 
   def perform(args)
     NewsScraper::Scraper.new(query: args[:query]).scrape do |a|
-      case a.class
-      when NewsScraper::Transformers::ScrapePatternNotDefined
+      case a.class.to_s
+      when "NewsScraper::Transformers::ScrapePatternNotDefined"
+        Rails.logger.info "#{a.root_domain} was not trained"
         TrainingLog.find_or_create_by!(
           root_domain: a.root_domain,
           uri: a.uri
         )
       else
+        Rails.logger.info "creating article for a[:uri]"
         NewsArticle.find_or_create_by!(a)
       end
     end
