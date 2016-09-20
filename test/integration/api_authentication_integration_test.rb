@@ -7,7 +7,7 @@ class ApiAuthenticationIntegrationTest < ActionDispatch::IntegrationTest
     parts_hash = parts.zip(parts.map(&:to_s)).to_h
 
     # defaults includes controller/action, also include format, verb, and parts for that URL
-    urls << route.defaults.merge(parts_hash.merge(format: :json, verb: route.verb.downcase))
+    urls << route.defaults.merge(parts_hash.merge(format: :json, verb: route.verb.downcase)) unless route.verb.empty?
   end
 
   app_urls.each do |url|

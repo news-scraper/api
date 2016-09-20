@@ -13,6 +13,7 @@ gem 'letsencrypt_plugin'
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'rubocop'
 end
 
 group :development do
