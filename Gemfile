@@ -5,7 +5,9 @@ gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'configuration'
-gem 'ejson'
+
+gem 'sidekiq'
+gem 'sidekiq-cron'
 
 group :development, :test do
   gem 'pry-byebug'
