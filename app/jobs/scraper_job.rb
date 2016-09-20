@@ -2,13 +2,16 @@ class ScraperJob < ApplicationJob
   queue_as :default
 
   def perform(args)
-    NewsScraper::Scraper.new(query: args[:query]).scrape do |article_hash|
-      NewsArticle.create(article_hash)
+    NewsScraper::Scraper.new(query: args[:query]).scrape do |a|
+      case a.class
+      when NewsScraper::Transformers::ScrapePatternNotDefined
+        TrainingLog.find_or_create_by!(
+          root_domain: a.root_domain,
+          uri: a.uri
+        )
+      else
+        NewsArticle.find_or_create_by!(a)
+      end
     end
-  rescue NewsScraper::Transformers::ScrapePatternNotDefined => e
-    TrainingLog.create(
-      root_domain: e.root_domain,
-      uri: e.uri
-    )
   end
 end

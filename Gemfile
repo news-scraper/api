@@ -4,7 +4,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'jbuilder', '~> 2.5'
-gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'configuration'
+gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'yield-errors'
 
 gem 'sidekiq'
 gem 'sidekiq-cron'
