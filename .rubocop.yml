@@ -3,6 +3,10 @@ inherit_from:
 
 AllCops:
   TargetRubyVersion: 2.2
+  Exclude:
+    - db/schema.rb
+    - 'vendor/**/*'
 
 Rails:
   Enabled: true
+

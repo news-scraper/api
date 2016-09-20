@@ -1,3 +1,6 @@
+# rubocop:disable Rails/Output
+# rubocop:disable Rails/Exit
+
 # Change these
 server '52.91.231.151', port: 22, roles: [:web, :app, :db], primary: true
 
