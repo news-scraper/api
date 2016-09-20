@@ -1,5 +1,5 @@
 inherit_from:
-  - https://raw.githubusercontent.com/news-scraper/styles/master/docs/rubocop.yml
+  - https://news-scraper.github.io/styles/docs/rubocop.yml
 
 AllCops:
   TargetRubyVersion: 2.2
