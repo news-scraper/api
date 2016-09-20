@@ -23,7 +23,7 @@ else
   end
 
   Sidekiq.configure_server do |config|
-    config.redis = { size: 5 }
+    config.redis = { size: 30 }
     Sidekiq::Cron::Job.load_from_hash(schedule)
   end
 end
