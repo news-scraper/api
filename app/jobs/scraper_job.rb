@@ -12,6 +12,7 @@ class ScraperJob < ApplicationJob
         )
       else
         Rails.logger.info "creating article for a[:uri]"
+        a[:scrape_query] = ScrapeQuery.find_by(query: args[:query])
         NewsArticle.find_or_create_by!(a)
       end
     end
