@@ -73,7 +73,21 @@ namespace :deploy do
       # Secrets.yml
       puts "Uploading secrets.yml to production"
       execute "touch #{shared_path}/config/secrets.yml"
-      upload! "config/secrets.yml", "#{shared_path}/config/secrets.yml"
+      Dir.mktmpdir do |dir|
+        yaml = YAML.load_file('config/secrets.yml')
+        yaml['production']['secret_key_base'] = `bundle exec rake secret`.strip
+        File.write("#{dir}/secrets.yml", yaml.to_yaml)
+        upload! "#{dir}/secrets.yml", "#{shared_path}/config/secrets.yml"
+      end
+    end
+  end
+
+  desc "Symlink nginx conf"
+  task :setup_nginx do
+    on roles(:app) do
+      execute :sudo, "rm -rf /etc/nginx/sites-enabled/default"
+      execute :sudo, "ln -sf #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/api"
+      execute :sudo, "service nginx restart"
     end
   end
 
@@ -99,16 +113,21 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      invoke 'deploy:setup_nginx'
       Rake::Task["puma:restart"].reenable
       invoke 'puma:restart'
     end
   end
 
-  namespace :rake do
-    desc "Run a task on a remote server."
-    # run like: cap staging rake:invoke task=a_certain_task
-    task :invoke do
-      run("cd #{deploy_to}/current; /usr/bin/env bundle exec rake #{ENV['task']} RAILS_ENV=#{rails_env}")
+  desc "Setup SSL certs"
+  task :ssl do
+    on roles(:app) do
+      if test("[ ! -f #{shared_path}/config/ssl/keyfile.pem ]")
+        execute "openssl genrsa 4096 > #{shared_path}/config/ssl/keyfile.pem"
+      end
+      within release_path do
+        execute :rake, 'letsencrypt_plugin', "RAILS_ENV=production"
+      end
     end
   end
 
