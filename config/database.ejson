@@ -1,0 +1,11 @@
+{
+  "_public_key" : "4040213e9cdeb11ff408f9e4e50cbadb02e0afd18a39067a208c9f9f6c97f750",
+  "production" : {
+    "user" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:IBZWq9qhUvAOGo2WqbFj04yMafP1Jzdh:WYZupYMTJ7oqGnOTXxzdJCfcOBeHNidlt/4nOg==]",
+    "password" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:+P+vJOrC+lzflt2ygFrkQyCIyx+ncfaU:Wp6d6x+9+4yz1soY8MR7Xxy6p7BEW1kEvqHv+iaPFsU4Dk3QyA==]",
+    "host" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:980nnrxyAKckBpbzgNaTvmNopvwKyt3q:J/HC+6GbMd+DENQQqrIlb5+Lz6vgZ3htjvfUxqLlNsqgbKEVN8GV3AcU4t2+30DwnMOGjW4AFiVvDrOkkrq7RC9PHFXmxmHp6g==]",
+    "port" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:ZYgm3cRoLX2yOui8GQziNu8+qmNF5QDY:yOL5uDmXTp2ba7f4hxsL9A4nIBQ=]",
+    "adapter" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:rhP76jtbvup5S1uPzR1wY2Qd2NNnLZ7e:p2p4BxsBvEFZQqbuJNMIaxIrdeTkxXjiGDg=]",
+    "encoding" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:YEdktFISqqjvvLBwN9FnXJ+BAfsDMwwC:nN3ik5qQeCTdcrcNfDQ5ubLY7oAo]",
+    "database" : "EJ[1:B6g6vvQ903FCMwzQxTnIuzVhTvlMSDTZ5cs8gYlGulQ=:OcfQTvv357bNcdaBy/ZS0fSDUgVVNFeg:QyzKu+0ud7UTWqKJ8HcReYQu1xpzvfS9idNbS0ZE2e4RUpMj]"}
+}

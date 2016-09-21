@@ -36,7 +36,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
   'config/ssl'
 )
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :chruby_ruby, 'ruby-2.3.1'
+set :chruby_ruby, 'ruby-2.3.0'
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -51,6 +51,32 @@ namespace :puma do
 end
 
 namespace :deploy do
+  desc "Make sure all linkes files exist"
+  task :setup_linked_files do
+    on roles(:app) do
+      require 'json'
+      require 'yaml'
+
+      execute "mkdir -p #{shared_path}/config"
+
+      # Database.yml
+      puts "Parsing and uploading database.yml"
+      public_key = JSON.parse(File.read('config/database.ejson'))['_public_key']
+      raise "Public Key for JSON wasn't found" unless File.exist?("/opt/ejson/keys/#{public_key}")
+      prod_db = JSON.parse(`ejson decrypt config/database.ejson`)
+      execute "touch #{shared_path}/config/database.yml"
+      Dir.mktmpdir do |dir|
+        File.write("#{dir}/db.yml", prod_db.to_yaml)
+        upload! "#{dir}/db.yml", "#{shared_path}/config/database.yml"
+      end
+
+      # Secrets.yml
+      puts "Uploading secrets.yml to production"
+      execute "touch #{shared_path}/config/secrets.yml"
+      upload! "config/secrets.yml", "#{shared_path}/config/secrets.yml"
+    end
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -86,7 +112,8 @@ namespace :deploy do
     end
   end
 
-  before :starting, :check_revision
-  after :finishing,    :cleanup
-  after :finishing,    :restart
+  before :starting,                   :check_revision
+  before 'check:linked_files',        'setup_linked_files'
+  after :finishing,                   :cleanup
+  after :finishing,                   :restart
 end
