@@ -2,7 +2,7 @@
 # rubocop:disable Rails/Exit
 
 # Change these
-server '52.91.231.151', port: 22, roles: [:web, :app, :db], primary: true
+server '54.85.251.80', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/news-scraper/api.git'
 set :application,     'api'
@@ -75,6 +75,14 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       Rake::Task["puma:restart"].reenable
       invoke 'puma:restart'
+    end
+  end
+
+  namespace :rake do
+    desc "Run a task on a remote server."
+    # run like: cap staging rake:invoke task=a_certain_task
+    task :invoke do
+      run("cd #{deploy_to}/current; /usr/bin/env bundle exec rake #{ENV['task']} RAILS_ENV=#{rails_env}")
     end
   end
 
