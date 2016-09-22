@@ -1,0 +1,10 @@
+<div class="col-md-4 col-sm-6">
+  <div class="card text-xs-center">
+    <div class="card-header">
+      <%= scrape_query.query %>
+    </div>
+    <div class="card-footer text-muted">
+      added <%= time_ago_in_words(scrape_query.created_at) %> ago
+    </div>
+  </div>
+</div>

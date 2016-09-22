@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-inverse" id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <a href="#">Dashboard</a>
+    </li>
+    <% navigation_links.each do |name, attributes| %>
+      <li>
+        <a href="<%= attributes[:link] %>">
+          <div>
+            <span class="fa fa-<%= attributes[:icon] %>"></span> <%= name %>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-dark bg-inverse navbar-fixed-bottom navbar-side-scroll hidden-md-up">
+  <ul class="nav nav-pills">
+    <% navigation_links.each do |name, attributes| %>
+      <li class="nav-item">
+        <a class="nav-link text-center" href="<%= attributes[:link] %>">
+          <span class="fa fa-fw fa-<%= attributes[:icon] %>"></span></br>
+          <small><%= name %></small>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</nav>

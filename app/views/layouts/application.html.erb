@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>News Scraper</title>
+    <link rel="shortcut icon" type="image/png" href="https://avatars3.githubusercontent.com/u/22282138?v=3&s=200"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="wrapper" class="clearfix">
+      <%= render 'layouts/components/sidebar' %>
+      <div id="page-content-wrapper" class="clearfix">
+        <%= render 'layouts/components/navbar' %>
+        <div id="content" class="clearfix"><%= yield %></div>
+      </div>
+    </div>
+  </body>
+</html>

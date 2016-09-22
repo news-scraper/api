@@ -9,6 +9,7 @@ class ApiAuthenticationIntegrationTest < ActionDispatch::IntegrationTest
     # defaults includes controller/action, also include format, verb, and parts for that URL
     urls << route.defaults.merge(parts_hash.merge(format: :json, verb: route.verb.downcase)) unless route.verb.empty?
   end
+  app_urls.uniq! { |url| "#{url[:controller]}/#{url[:action]}/#{url[:verb]}" }
 
   app_urls.each do |url|
     test "url for #{url[:controller]}/#{url[:action]}/#{url[:verb]} should 401" do

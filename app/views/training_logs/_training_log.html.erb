@@ -1,0 +1,14 @@
+<div class="col-md-4 col-sm-6">
+  <div class="card text-xs-center">
+    <div class="card-header">
+      <%= training_log.root_domain %>
+      <span class="tag tag-default" %><%= training_log.trained_status %></span>
+    </div>
+    <div class="card-block">
+      <a href="<%= training_log.uri %>" class="btn btn-primary">View link</a>
+    </div>
+    <div class="card-footer text-muted">
+      added <%= time_ago_in_words(training_log.created_at) %> ago
+    </div>
+  </div>
+</div>

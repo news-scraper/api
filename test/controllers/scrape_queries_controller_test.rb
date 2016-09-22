@@ -5,6 +5,11 @@ class ScrapeQueriesControllerTest < ActionDispatch::IntegrationTest
     @scrape_query = scrape_queries(:one)
   end
 
+  test "should get index as html" do
+    get scrape_queries_url(format: :html)
+    assert_response :success
+  end
+
   test "should get index" do
     get scrape_queries_url(format: :json), headers: authorized_headers
     assert_response :success

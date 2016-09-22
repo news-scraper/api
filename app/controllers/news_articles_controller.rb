@@ -1,4 +1,8 @@
 class NewsArticlesController < ApplicationController
+  def index
+    @news_articles = NewsArticle.all
+  end
+
   def articles
     @scrape_query = ScrapeQuery.find_by(query: params[:query])
     if @scrape_query

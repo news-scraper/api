@@ -5,6 +5,11 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
     @untrained_training_log = training_logs(:untrained)
   end
 
+  test "should get index as html" do
+    get training_logs_url(format: :html)
+    assert_response :success
+  end
+
   test "should get index" do
     get training_logs_url(format: :json), headers: authorized_headers
     assert_response :success

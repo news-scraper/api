@@ -5,6 +5,11 @@ class DomainsControllerTest < ActionDispatch::IntegrationTest
     @domain = domains(:one)
   end
 
+  test "should get index as html" do
+    get domains_url(format: :html)
+    assert_response :success
+  end
+
   test "should get index" do
     get domains_url(format: :json), headers: authorized_headers
     assert_response :success

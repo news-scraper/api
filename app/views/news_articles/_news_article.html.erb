@@ -1,0 +1,20 @@
+<div class="col-md-4 col-sm-6">
+  <div class="card text-xs-center">
+    <div class="card-header">
+      <%= news_article.title %>
+      <p class="text-muted">by <%= news_article.author %></p>
+    </div>
+    <div class="card-block">
+      <span class="tag tag-default" %><%= news_article.root_domain %></span>
+      <span class="tag tag-default" %><%= news_article.section %></span>
+      <p><%= news_article.description %></p>
+      <a href="<%= news_article.uri %>" class="btn btn-primary">View link</a>
+    </div>
+    <div class="card-footer text-muted">
+      written <%= time_ago_in_words(news_article.datetime) %> ago
+    </div>
+    <div class="card-footer text-muted">
+      added <%= time_ago_in_words(news_article.created_at) %> ago
+    </div>
+  </div>
+</div>

@@ -35,12 +35,12 @@ end
 data_types = NewsScraper.configuration.scrape_patterns['data_types']
 %w(shopify.ca).each do |domain|
   Rails.logger.info "Making a domain entry for #{domain}"
-  domain = Domain.create(root_domain: domain)
-  data_types.each do |data_type|
-    domain.domain_entries.create(
+  domain_entries_attributes = data_types.collect do |data_type|
+    {
       data_type: data_type,
       method: 'css',
       pattern: '.div'
-    )
+    }
   end
+  Domain.create(root_domain: domain, domain_entries_attributes: domain_entries_attributes)
 end

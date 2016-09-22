@@ -6,7 +6,7 @@ require 'capistrano/deploy'
 
 require 'capistrano/chruby'
 require 'capistrano/bundler'
-require 'capistrano/rails/migrations'
+require 'capistrano/rails'
 require 'capistrano/puma'
 require 'capistrano/sidekiq'
 
