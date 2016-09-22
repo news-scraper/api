@@ -1,0 +1,8 @@
+<% unless flash.empty? %>
+  <div id="toast"></div>
+  <ul id="toasts">
+    <% flash.each do |key, message| %>
+      <li data-toast-type="<%= key %>"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -11,12 +11,11 @@
   </head>
 
   <body>
-    <div id="wrapper" class="clearfix">
-      <%= render 'layouts/components/sidebar' %>
-      <div id="page-content-wrapper" class="clearfix">
-        <%= render 'layouts/components/navbar' %>
-        <div id="content" class="clearfix"><%= yield %></div>
-      </div>
-    </div>
+    <% if user_signed_in? %>
+      <%= render 'layouts/authenticated_layout' %>
+    <% else %>
+      <%= render 'layouts/components/toasts' %>
+      <div class="container"><%= yield %></div>
+    <% end %>
   </body>
 </html>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount LetsencryptPlugin::Engine, at: '/'
 
   root 'training_logs#index'

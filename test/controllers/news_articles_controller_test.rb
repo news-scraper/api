@@ -2,6 +2,7 @@ require 'test_helper'
 
 class NewsArticlesControllerTest < ActionDispatch::IntegrationTest
   test "should get index as html" do
+    sign_in users(:one)
     get news_articles_url(format: :html)
     assert_response :success
   end

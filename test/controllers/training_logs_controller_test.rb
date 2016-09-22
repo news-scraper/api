@@ -6,6 +6,7 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index as html" do
+    sign_in users(:one)
     get training_logs_url(format: :html)
     assert_response :success
   end

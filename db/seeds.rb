@@ -44,3 +44,7 @@ data_types = NewsScraper.configuration.scrape_patterns['data_types']
   end
   Domain.create(root_domain: domain, domain_entries_attributes: domain_entries_attributes)
 end
+
+user_params = { email: 'email@example.com', password: 'password', password_confirmation: 'password' }
+Rails.logger.info "Making a default user - #{user_params}"
+User.create(user_params)
