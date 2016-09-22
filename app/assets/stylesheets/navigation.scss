@@ -14,11 +14,15 @@ nav.navbar {
       display: inline-block;
       float: none;
       &.brand {
-        border-right: 1px solid white;
+        border-right: 1px solid #fff;
         padding-right: 10px;
       }
       a {
         color: #fff;
+      }
+      &.active {
+        border-bottom: 3px solid #fff;
+        margin-bottom: -3px;
       }
     }
   }
@@ -37,11 +41,18 @@ nav.navbar {
     line-height: 40px;
 
     &:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     span.fa {
       color: #999999;
+      width: 35px;
+    }
+
+    &.active {
+      span.fa, a {
+        color: #fff;
+      }
     }
     
     a {
@@ -52,7 +63,7 @@ nav.navbar {
         text-decoration: none;
       }
 
-      &:active, &:focus {
+      &:focus {
         text-decoration: none;
       }
     }

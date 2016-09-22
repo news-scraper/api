@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <nav class="navbar navbar-dark bg-inverse" id="sidebar-wrapper">
+  <nav class="navbar navbar-dark bg-inverse" id="sidebar-wrapper" data-turbolinks-permanent>
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
         <a href="/">
@@ -8,8 +8,8 @@
         </a>
       </li>
       <% navigation_links.each do |name, attributes| %>
-        <li>
-          <%= link_to attributes[:link], method: attributes[:method] || 'get' do %>
+        <li class="<%= attributes[:active] %>">
+          <%= link_to attributes[:link], method: (attributes[:method] || 'get') do %>
             <div>
               <span class="fa fa-<%= attributes[:icon] %>"></span> <%= name %>
             </div>
@@ -19,7 +19,7 @@
     </ul>
   </nav>
 
-  <nav class="navbar navbar-dark bg-inverse navbar-fixed-bottom navbar-side-scroll hidden-md-up">
+  <nav class="navbar navbar-dark bg-inverse navbar-fixed-bottom navbar-side-scroll hidden-md-up" data-turbolinks-permanent>
     <ul class="nav nav-pills">
       <li class="nav-item brand">
         <a href="/" class="nav-item text-center">
@@ -28,8 +28,8 @@
         </a>
       </li>
       <% navigation_links.each do |name, attributes| %>
-        <li class="nav-item">
-          <%= link_to attributes[:link], method: attributes[:method] || 'get', class: 'nav-item text-center' do %>
+        <li class="nav-item <%= attributes[:active] %>">
+          <%= link_to attributes[:link], method: attributes[:method] || 'get', class: "nav-item text-center" do %>
             <span class="fa fa-fw fa-<%= attributes[:icon] %>"></span></br>
             <small><%= name %></small>
           <% end %>
