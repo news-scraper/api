@@ -8,7 +8,7 @@ class ApiAuthenticationIntegrationTest < ActionDispatch::IntegrationTest
 
     # defaults includes controller/action, also include format, verb, and parts for that URL
     should_add = !route.verb.empty? && !route.defaults[:controller].include?('devise')
-    urls << route.defaults.merge(parts_hash.merge(format: :json, verb: route.verb.downcase)) if should_add 
+    urls << route.defaults.merge(parts_hash.merge(format: :json, verb: route.verb.downcase)) if should_add
   end
   app_urls.uniq! { |url| "#{url[:controller]}/#{url[:action]}/#{url[:verb]}" }
 

@@ -71,13 +71,17 @@ namespace :deploy do
       end
 
       # Secrets.yml
-      puts "Uploading secrets.yml to production"
-      execute "touch #{shared_path}/config/secrets.yml"
-      Dir.mktmpdir do |dir|
-        yaml = YAML.load_file('config/secrets.yml')
-        yaml['production']['secret_key_base'] = `bundle exec rake secret`.strip
-        File.write("#{dir}/secrets.yml", yaml.to_yaml)
-        upload! "#{dir}/secrets.yml", "#{shared_path}/config/secrets.yml"
+      if test("[ ! -f #{shared_path}/config/secrets.yml ]")
+        puts "Uploading secrets.yml to production"
+        execute "touch #{shared_path}/config/secrets.yml"
+        Dir.mktmpdir do |dir|
+          yaml = YAML.load_file('config/secrets.yml')
+          yaml['production']['secret_key_base'] = `bundle exec rake secret`.strip
+          yaml['production']['devise_secret'] = `bundle exec rake secret`.strip
+          yaml['production']['devise_pepper'] = `bundle exec rake secret`.strip
+          File.write("#{dir}/secrets.yml", yaml.to_yaml)
+          upload! "#{dir}/secrets.yml", "#{shared_path}/config/secrets.yml"
+        end
       end
     end
   end
