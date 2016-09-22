@@ -2,7 +2,10 @@
   <nav class="navbar navbar-dark bg-inverse" id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a href="#">Dashboard</a>
+        <a href="/">
+          <img src="https://avatars3.githubusercontent.com/u/22282138?v=3&s=200" alt="news scraper" height="30" />
+          &nbsp; News Scraper
+        </a>
       </li>
       <% navigation_links.each do |name, attributes| %>
         <li>
@@ -18,6 +21,12 @@
 
   <nav class="navbar navbar-dark bg-inverse navbar-fixed-bottom navbar-side-scroll hidden-md-up">
     <ul class="nav nav-pills">
+      <li class="nav-item brand">
+        <a href="/" class="nav-item text-center">
+          <img src="https://avatars3.githubusercontent.com/u/22282138?v=3&s=200" alt="news scraper" height="20" /></br>
+          <small>News Scraper</small>
+        </a>
+      </li>
       <% navigation_links.each do |name, attributes| %>
         <li class="nav-item">
           <%= link_to attributes[:link], method: attributes[:method] || 'get', class: 'nav-item text-center' do %>

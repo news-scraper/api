@@ -13,6 +13,10 @@ nav.navbar {
     li.nav-item {
       display: inline-block;
       float: none;
+      &.brand {
+        border-right: 1px solid white;
+        padding-right: 10px;
+      }
       a {
         color: #fff;
       }
