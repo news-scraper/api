@@ -8,7 +8,7 @@
       <span class="tag tag-default" %><%= news_article.root_domain %></span>
       <span class="tag tag-default" %><%= news_article.section %></span>
       <p><%= news_article.description %></p>
-      <a href="<%= news_article.uri %>" class="btn btn-primary">View link</a>
+      <a href="http://<%= news_article.uri %>" class="btn btn-primary">View link</a>
     </div>
     <div class="card-footer text-muted">
       written <%= time_ago_in_words(news_article.datetime) %> ago
