@@ -15,7 +15,12 @@
       <%= render 'layouts/authenticated_layout' %>
     <% else %>
       <%= render 'layouts/components/toasts' %>
-      <div class="container"><%= yield %></div>
+      <div class="container">
+        <div class="row text-center">
+          <img src="https://avatars3.githubusercontent.com/u/22282138?v=3&s=200" alt="news scraper" height="200" />
+        </div>
+        <%= yield %>  
+      </div>
     <% end %>
   </body>
 </html>
