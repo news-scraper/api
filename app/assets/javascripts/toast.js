@@ -2,7 +2,7 @@ var processToast, timeout, toastError, toastMessage, toastQueue;
 
 toastQueue = [];
 
-$(document).on("ready", function() {
+$(document).on("turbolinks:load", function() {
   toastQueue = $.makeArray($('#toasts').children());
   return processToast();
 });
