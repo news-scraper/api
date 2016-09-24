@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 schedule = {
   'scrape_query_scheduler_job' => {
     'cron'        =>  '0 * * * *', # Every hour
@@ -27,3 +29,5 @@ else
     Sidekiq::Cron::Job.load_from_hash(schedule)
   end
 end
+
+Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]

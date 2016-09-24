@@ -1,6 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
   mount LetsencryptPlugin::Engine, at: '/'
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   root 'training_logs#index'
 
