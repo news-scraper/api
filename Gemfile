@@ -20,6 +20,7 @@ end
 # Background Jobs
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'sinatra'
 
 # Infrastructure
 gem 'pg'
