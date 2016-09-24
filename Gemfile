@@ -18,9 +18,9 @@ source 'https://rails-assets.org' do
 end
 
 # Background Jobs
-gem 'sidekiq'
+gem 'sidekiq', git: 'git@github.com:jules2689/sidekiq.git'
 gem 'sidekiq-cron'
-gem 'sinatra'
+gem 'sinatra', '2.0.0.beta2'
 
 # Infrastructure
 gem 'pg'

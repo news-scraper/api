@@ -7,6 +7,16 @@ GIT
       sidekiq (>= 3.4)
 
 GIT
+  remote: git@github.com:jules2689/sidekiq.git
+  revision: 9fa2052ff6595996a194b50a63101b28d5dcdc47
+  specs:
+    sidekiq (4.2.1)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection
+      redis (~> 3.2, >= 3.2.1)
+
+GIT
   remote: git@github.com:plataformatec/devise.git
   revision: 88724e10adaf9ffd1d8dbfbaadda2b9d40de756a
   specs:
@@ -157,6 +167,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mustermann (1.0.0.beta2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
@@ -181,7 +192,7 @@ GEM
       pry (~> 0.10)
     puma (3.6.0)
     rack (2.0.1)
-    rack-protection (1.5.3)
+    rack-protection (2.0.0.beta2)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -243,17 +254,15 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     securecompare (1.0.0)
-    sidekiq (4.2.1)
-      concurrent-ruby (~> 1.0)
-      connection_pool (~> 2.2, >= 2.2.0)
-      rack-protection (~> 1.5)
-      redis (~> 3.2, >= 3.2.1)
     sidekiq-cron (0.4.2)
       redis-namespace (>= 1.5.2)
       rufus-scheduler (>= 2.0.24)
       sidekiq (>= 4.0.0)
-    sinatra (1.0)
-      rack (>= 1.0)
+    sinatra (2.0.0.beta2)
+      mustermann (= 1.0.0.beta2)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0.beta2)
+      tilt (~> 2.0)
     slop (3.6.0)
     spring (1.7.2)
     spring-watcher-listen (2.0.0)
@@ -316,9 +325,9 @@ DEPENDENCIES
   rails-assets-tether (>= 1.1.0)!
   rubocop
   sass-rails (~> 5.0)
-  sidekiq
+  sidekiq!
   sidekiq-cron
-  sinatra
+  sinatra (= 2.0.0.beta2)
   spring
   spring-watcher-listen (~> 2.0.0)
   therubyracer
