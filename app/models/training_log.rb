@@ -28,7 +28,7 @@ class TrainingLog < ApplicationRecord
 
     transformed_data = NewsScraper::Transformers::TrainerArticle.new(
       url: uri,
-      payload: Net::HTTP.get_response(URI(uri))
+      payload: UrlResolver.resolve(uri)
     ).transform
     Api::Application::Redis.set("training-#{id}-transformed", transformed_data.to_json)
     transformed_data
