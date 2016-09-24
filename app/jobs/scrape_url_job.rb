@@ -7,7 +7,7 @@ class ScrapeUrlJob < ApplicationJob
       url: args[:url],
       payload: payload
     ).transform
-    transformed_article[:scrape_query] = ScrapeQuery.find_by(root_domain: args[:root_domain])
+    transformed_article[:scrape_query] = ScrapeQuery.find_by(query: args[:query])
     NewsArticle.find_or_create_by!(transformed_article)
   end
 end

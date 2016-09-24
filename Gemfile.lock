@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: git@github.com:richardwu/news_scraper.git
-  revision: a625a58702e92299de26015282d6c839f170d683
+  revision: 5c553395e809b687799574f9c33a01ded042c3ac
   branch: trainer-split
   specs:
     news_scraper (0.1.2)

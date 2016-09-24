@@ -25,8 +25,10 @@ class TrainingFlowController < ApplicationController
 
   def train
     @domain = Domain.create_from_params(params, @training_log)
+
     respond_to do |format|
       if @domain.valid?
+        NewsScraper.configuration.scrape_patterns['domains'] = Domain.hash
         @training_logs = TrainingLog.train!(@training_log.root_domain)
         format.json do
           render template: 'training_flow/state_change', locals: {
