@@ -15,7 +15,9 @@ class TrainingLogTest < ActiveSupport::TestCase
 
   test "train! trains all entries for root_domain" do
     root_domain = training_logs(:claimed).root_domain
-    TrainingLog.train!(root_domain)
+    capture_subprocess_io do
+      TrainingLog.train!(root_domain)
+    end
     assert TrainingLog.where(root_domain: root_domain).all?(&:trained?)
   end
 
