@@ -19,10 +19,10 @@ GIT
 
 GIT
   remote: git@github.com:richardwu/news_scraper.git
-  revision: 2b15b66c5e313629cc86852940d83bebbd12eb7b
-  branch: yield-errors
+  revision: a625a58702e92299de26015282d6c839f170d683
+  branch: trainer-split
   specs:
-    news_scraper (0.1.0)
+    news_scraper (0.1.2)
       htmlbeautifier (~> 1.1, >= 1.1.1)
       httparty (~> 0.14, >= 0.14.0)
       nokogiri (~> 1.6, >= 1.6.8)
@@ -229,7 +229,7 @@ GEM
       guess_html_encoding (>= 0.0.4)
       nokogiri (>= 1.6.0)
     rufus-scheduler (3.2.1)
-    sanitize (4.2.0)
+    sanitize (4.3.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4.1)

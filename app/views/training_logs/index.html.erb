@@ -1,7 +1,32 @@
 <% content_for :header_title do %>Training Logs<% end %>
 
-<% @training_logs.in_groups_of(3).each do |group| %>
-  <div class="row">
-    <%= render group.reject(&:nil?) %>
+<div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#untrained" aria-expanded="true" aria-controls="untrained">Untrained Logs</a>
+      </h4>
+    </div>
+    <div id="untrained" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <% @training_logs.in_groups_of(3).each do |group| %>
+        <div class="row">
+          <%= render group.reject(&:nil?) %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Claimed Logs</a>
+      </h4>
+    </div>
+    <div id="claimed" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+      <% @claimed_logs.in_groups_of(3).each do |group| %>
+        <div class="row">
+          <%= render group.reject(&:nil?) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

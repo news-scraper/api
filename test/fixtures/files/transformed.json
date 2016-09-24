@@ -1,0 +1,143 @@
+{
+  "author": {
+    "class": {
+      "method": "css",
+      "pattern": ".author",
+      "data": "Khari Johnson"
+    },
+    "id": {
+      "method": "css",
+      "pattern": "#author",
+      "data": ""
+    },
+    "name": {
+      "method": "css",
+      "pattern": ".author-name",
+      "data": ""
+    },
+    "link": {
+      "method": "xpath",
+      "pattern": "\/\/a[contains(@href, 'author')]",
+      "data": "Khari Johnson"
+    },
+    "meta": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='author']\/@content",
+      "data": ""
+    },
+    "rel_link": {
+      "method": "xpath",
+      "pattern": "\/\/a[@rel='author']",
+      "data": "Khari Johnson"
+    },
+    "vcard": {
+      "method": "css",
+      "pattern": ".vcard .fn",
+      "data": ""
+    }
+  },
+  "body": {
+    "readability": {
+      "method": "readability",
+      "pattern": "",
+      "data": "<div>\n  <div>\n    <p>It was while walking home in late 2014 that Kit\u2019s Michael Perry had his \u201choly shit\u201d moment.<\/p>\n    <p>That\u2019s when he became\u00a0convinced that he should to move his startup deeper into SMS as a way to offer a marketing service to merchants and small business owners who had neither the time nor the interest to pursue other options. Now you\u00a0can buy Facebook ads with four messages.<\/p>\n    <p>Perry compares that moment to a band recording an amazing song.<\/p>\n    <p>\u201cDo you think that they were just sitting back and listening to that song and thinking \u2018This is going to be a fucking hit\u2019? You know what I\u2019m saying? Like no one else has heard it, and they\u2019re sitting there going, \u2018This is going to go platinum, this is going to be a hit\u2019,\u201d he said.<\/p>\n    <p>In April, a day after Facebook opened the Messenger API for bots and Shopify became the first commerce platform to integrate with Messenger, <a href=\"http:\/\/kitcrm.com\">Kit<\/a> was acquired by Shopify.<\/p>\n    <p>Kit elected to work exclusively with Shopify customers and currently works with 5,000 businesses in 76 countries around the world.<\/p>\n    <p>Perry expects that Kit will someday be the biggest employer in the world, that Shopify will become the first place people go to create a business, and that bots and A.I. will be \u201cmuch more transformational than desktop to mobile.\u201d<\/p>\n    <p>In the future, Perry wants Kit to automate more tasks for the more than 300,000\u00a0<a href=\"http:\/\/www.fool.com\/investing\/2016\/08\/26\/why-analysts-are-upgrading-shopify-inc-stock.aspx\">Shopify customers<\/a> around the world.<\/p>\n    <p>Though his company fully automates tasks, his biggest fear\u00a0is that <a href=\"http:\/\/venturebeat.com\/2016\/09\/08\/why-shopifys-michael-perry-is-afraid-bots-will-fail-small-businesses\/\">automated bots working on behalf of small businesses can\u00a0eat away at the authenticity<\/a> that makes these companies unique and distinguishes them from big box stores or giants in the market, like Amazon.<\/p>\n    <p>This interview was edited for brevity and clarity.<\/p>\n    <p>VentureBeat: My rabbit hole, so to speak, is a bit different from yours, and I think you\u2019ve got a real deep vision on the conversational commerce side of things. So where are we going? Where do you think we\u2019re heading?<\/p>\n    <p>Perry: The level of sophistication this stuff is going to get to is going to allow us to be the people we want to be. It will allow us to do the things we want to do. It will bring us to a new level of efficiency that we\u2019ve never experienced before in our lives. We\u2019re moving into a very liberating era where knowledge will always be accessible, information will always be accessible, but\u00a0right now, we live in a world where a lot of bots are really bad. They\u2019re very unsophisticated; they can\u2019t actually take action.<\/p>\n    <p>VentureBeat: What are the bridges you think we can cross within the next year or so? Because I think we\u2019re getting to the point where\u2026 you\u2019ve seen it. You start out and everyone\u2019s really excited, and we can all see the potential very well, then the malaise sets in. I\u2019ve heard this being called the \u201cfiguring-it-out phase.\u201d<\/p>\n    <p>Perry: I think we\u2019re going to see a fairly big dead pool in the next four months. Lots of things are undeservedly getting funded, like I read things and am like, Holy shit, they just raised $2 million? I think we\u2019re in an era similar to when iOS came out with their SDK, and everyone was like, \u201cI\u2019m going to go build.\u201d I was one of those guys. I was like, \u201cFuck the web. I\u2019m going to go build a mobile app,\u201d because at that time in my life I was trying to get rich. After you fail enough businesses as an entrepreneur, you stop actually caring about getting rich. You hit this point, this line in the sand where you\u2019re like\u2026I actually have to find out if I\u2019m capable of doing this.<\/p>\n    <p>I think what\u2019s happening right now is we\u2019re seeing this period where everyone is super excited about the bot era; everyone\u2019s super excited about the A.I. era, even though none of their bots have A.I. And then they\u2019re like, \u201cI\u2019m going to go build a bot,\u201d and so they force a square into a round hole, and it\u2019s a very bad experience. It doesn\u2019t actually work out.<\/p>\n    <p>I hate to keep running the railroad tracks over Poncho, but that is a very bad experience that doesn\u2019t actually speed the process up. For us, as a company, that is the measurement we\u2019ve always strived for. If I can still do [something] faster than Kit, then it\u2019s wrong. If Kit is not more capable and efficient then I am, then it\u2019s failing the store owner, because they\u2019re going to get frustrated, and they might as well go do it themselves.<\/p>\n    <p>VentureBeat: Any bots you\u2019re excited about other than your own?<\/p>\n    <p>Perry: I really think Digit is great; I use Digit all the time. It takes action.<\/p>\n    <p>VentureBeat: How would you characterize a lot of bots being made right now?<\/p>\n    <p>Perry: The problem is that people aren\u2019t building because it\u2019s the right solution to the problem; people are building [bots] because it\u2019s the hot thing to build. And I think that there are still some applications; there are some experiences that are still better on web than they are on mobile, and there are going to be some experiences that are still going to be better on mobile than they are on a conversational interface with a bot. So I think it\u2019s worth understanding what the problem is you\u2019re trying to solve and how it relates to a time experience. I really use time as the greatest measurement here, and I think that a lot of people haven\u2019t woken up to that yet, because they\u2019re not really looking at it as the solution. They\u2019re looking at it as, \u201cThis is the craze, someone will buy me fast, this is cool.\u201d<\/p>\n    <p>VentureBeat:\u00a0What do you think are some of the challenges ecommerce faces\u00a0in the chat interface?<\/p>\n    <p>Perry: One piece is how is conversational commerce going to help them drive more sales? It\u2019s very clear to me that it will allow businesses for the very first time on ecommerce to maintain the special intimacy that small businesses have. I grew up working in small family businesses, starting at like seven, eight, nine years old. And I loved when people would come in, and I\u2019d watch my uncle or my dad. Their interactions with customers is what actually made the sale happen.<\/p>\n    <p>I can talk to a small merchant in New Zealand about his beef jerky and have a conversation with him about it the same way as if I physically walked into a store. So anytime you can take this physical experience that\u2019s really magical [and maintain it in a digital setting], that makes it worth continually paying a premium. Because, obviously, it\u2019s a premium if you want to buy from a small business owner and you take that into the digital world. That is a very special moment; that\u2019s a privileged conversation to have with your customers at scale. That, to me, is everything.<\/p>\n    <p>Then there\u2019s the flip side, where it\u2019s just the actual messaging component for a small business owner to work in a virtual world with virtual employees. All that will actually allow for mass production, mass scale to levels that we\u2019ve never seen before. You can have one guy in New Zealand, one guy from San Francisco, and Kit, and the three of these people can be working together from their apartments and in the virtual world and building a multimillion dollar business. In the history of mankind, we\u2019ve never seen anything like this before.<\/p>\n    <p>VentureBeat: I agree with that, and I think that\u2019s something Jeff Lawson from Twilio was saying, as well, that this ability to build things and make\u00a0change has never happened before in human history.\u00a0I\u2019m not sure everyone understands.<\/p>\n    <p>Perry: No, no they don\u2019t get it yet. It will take some years to catch on, but that\u2019s what my excitement is like. It\u2019s the dirty secret we all know, but very few people recognize, that we are on the cusp of some massive shit. So you\u2019re just sitting back, and we\u2019re working hard to position ourselves, because we haven\u2019t won yet.<\/p>\n    <p>VentureBeat: Let\u2019s go back: We know the positive sides of the ecommerce chat interface. What are the challenges?<\/p>\n    <p>Perry: There\u2019s no data that supports this, but the challenges are that people will overuse it and lose their authenticity. Right now, it\u2019s brilliant, because it\u2019s still so small that I can talk to Rachel who\u2019s selling jackets and say, \u201cHey I\u2019m interested in buying this for my wife. Can you help me?\u201d and she\u2019ll respond.<\/p>\n    <p>I think that one thing we\u2019re very much trying to navigate away from is having a bot respond to that question, losing the authenticity, and then it feels like you\u2019re calling Amazon\u2019s customer support that puts you through Press 1 for orders, Press 2 for refunds\u2026 that is my biggest fear.<\/p>\n    <p>Being at Shopify now, and being a guy that really is passionate about this space and is incredibly passionate about entrepreneurs and small business, people have asked me 100 times over, \u201cWhen will you build Kit\u2019s ability to do customer support and customer service?\u201d And I said\u00a0not until natural language processing is at such a point that it can carry on the conversation and feel very authentic.<\/p>\n    <p>Because the last thing you want to do for small business owners is rob them of authenticity. People put up with that with Amazon because they\u2019re buying stuff for pennies on the dollar, and they\u2019re getting it the next day, and [Amazon has] all these other superpowers that sort of compensate for the lack of authenticity. [But there\u2019s a] lack of support in the way that you\u2019d want a small business owner to care about you and care about the purchase and care about the conversation. So I don\u2019t know if [automation is] why we\u2019ll fail, but that is my biggest fear, like I talk to my wife about this. I lose sleep over this, and I actually am very vocal within Shopify, because I\u2019m like, we can\u2019t fuck these people over like this.<\/p>\n    <p>We can\u2019t just say [automation] will help with efficiency. Some things can\u2019t be efficient. Where we can help is saying, Hey, here is the entrepreneur, and they\u2019re responsible for marketing, and logistics, and product management, and customer reviews, and loyalty, taxes, bookkeeping\u00a0\u2014 these people are by themselves trying to do 20 roles. My goal, my vision, is that I\u2019m going to eat all these roles, so that\u00a0this guy can just spend his time focused on two things: his product and his customers. Because at the end of the day, for a founder those are really the two most important things.<\/p>\n    <p>VentureBeat: So do you think companies like Kit and Shopify are the other side of the argument that automation is going to take all of our jobs?<\/p>\n    <p>Perry: No. You know, the thing is I\u2019ve had a lot of backlash about this, a lot of angry people at conferences and things like that, saying I\u2019m the guy ruining you know\u2026 whatever. The reality of it is I go to sleep at night actually helping with job creation, because these are people who are making $3,000 a month, $4,000 a month, to support their family. They have no resources to hire a person. I\u2019m not taking any job away, because they couldn\u2019t afford to hire anyone in the first place.<\/p>\n    <p>And you look at the demographics of people we\u2019re trying to help, and if anything, I\u2019d love to, over time, help put their businesses in such a position where maybe they stop using Kit and say, \u201cHey, Kit\u2019s helping me with these three things. I really want to hire an accountant.\u201d I really hope that the legacy of Kit is built around the fact that we actually put more people to work than anyone ever gave us credit for, and I really do believe that will be the outcome at the end of the day.<\/p>\n    <div>Get more stories like this on Twitter &amp;\u00a0Facebook<\/div>\n    \t\t\t\t<\/div>\n<\/div>"
+    }
+  },
+  "description": {
+    "meta": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='description']\/@content",
+      "data": "It was while walking home in late 2014 that Kit\u2019s Michael Perry had his \u201choly shit\u201d moment."
+    },
+    "og": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='og:description']\/@content",
+      "data": "It was while walking home in late 2014 that Kit's Michael Perry had his \u201choly shit\" moment."
+    }
+  },
+  "keywords": {
+    "meta": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='keywords']\/@content",
+      "data": ""
+    },
+    "article_tag": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='article:tag']\/@content",
+      "data": ""
+    }
+  },
+  "section": {
+    "meta": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='article:section']\/@content",
+      "data": ""
+    }
+  },
+  "datetime": {
+    "article_date_original": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='article_date_original']\/@content",
+      "data": ""
+    },
+    "article_published_time": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='article:published_time']\/@content",
+      "data": ""
+    },
+    "date": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='date']\/@content",
+      "data": ""
+    },
+    "date_published": {
+      "method": "xpath",
+      "pattern": "\/\/*[@itemprop='datePublished']\/@datetime",
+      "data": ""
+    },
+    "og_published_time": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='og:published_time']\/@content",
+      "data": ""
+    },
+    "original_publication_date": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='OriginalPublicationDate']\/@content",
+      "data": ""
+    },
+    "publication_date": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='publication_date']\/@content",
+      "data": ""
+    },
+    "publish_date": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='PublishDate']\/@content",
+      "data": ""
+    },
+    "rnews_date_published": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='rnews:datePublished']\/@content",
+      "data": ""
+    },
+    "sailthru_date": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@name='sailthru.date']\/@content",
+      "data": ""
+    }
+  },
+  "title": {
+    "html": {
+      "method": "xpath",
+      "pattern": "\/\/title",
+      "data": "Shopify\u2019s Michael Perry on bots and automation: \u2018We are on the cusp of some massive sh*t\u2019 | VentureBeat | Bots | by Khari Johnson"
+    },
+    "og": {
+      "method": "xpath",
+      "pattern": "\/\/meta[@property='og:title']\/@content",
+      "data": "Shopify\u2019s Michael Perry on bots and automation: \u2018We are on the cusp of some massive sh*t\u2019"
+    }
+  },
+  "uri": "venturebeat.com\/2016\/09\/19\/shopifys-michael-perry-on-bots-and-automation-we-are-on-the-cusp-of-some-massive-sht\/",
+  "root_domain": "venturebeat.com"
+}

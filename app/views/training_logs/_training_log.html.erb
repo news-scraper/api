@@ -5,7 +5,10 @@
       <span class="tag tag-default" %><%= training_log.trained_status %></span>
     </div>
     <div class="card-block">
-      <a href="http://<%= training_log.uri %>" class="btn btn-primary">View link</a>
+      <a href="http://<%= training_log.uri %>" class="btn btn-info">View link</a>
+      <% unless training_log.trained? %>
+        <%= link_to 'Train', train_domain_path(training_log), class: "btn btn-primary" %>
+      <% end %>
     </div>
     <div class="card-footer text-muted">
       added <%= time_ago_in_words(training_log.created_at) %> ago

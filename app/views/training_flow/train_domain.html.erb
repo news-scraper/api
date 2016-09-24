@@ -1,0 +1,44 @@
+<% content_for :header_title do %>Training <strong><%= @training_log.root_domain %></strong><% end %>
+
+<div class="alert alert-info">
+  <p>Training on URL: <strong><%= @training_log.uri %></strong></p>
+  <p>Choose the appropriate option in each section.</p>
+</div>
+
+<%= form_for @training_log, url: train_training_logs_path, method: :post do |f| %>
+  <% if @domain.try(:errors).present? %>
+    <div class="alert alert-danger">
+       <h2><%= pluralize(@domain.errors.count, "error") %> prohibited this training log from being trained:</h2>
+       <ul>
+         <% @domain.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+    </div>
+  <% end %>
+
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+    <% NewsScraper.configuration.scrape_patterns['data_types'].each_with_index do |data_type, index| %>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading-<%= accordion_handle(data_type) %>">
+          <h4 class="panel-title">
+            <a data-toggle="collapse"
+               data-parent="#accordion"
+               href="#<%= accordion_handle(data_type) %>"
+               aria-expanded="<%= index == 0 ? 'true' : 'false' %>"
+               aria-controls="<%= accordion_handle(data_type) %>">
+              <%= data_type %>
+            </a>
+          </h4>
+        </div>
+        <div id="<%= accordion_handle(data_type) %>"
+             class="panel-collapse collapse <%= index == 0 ? 'in' : 'out' %>"
+             role="tabpanel"
+             aria-labelledby="heading-<%= data_type.tr(' ', '_') %>">
+          <%= render 'training_option', f: f, training_options: @training_log.transformed_data, data_type: data_type, params: params %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

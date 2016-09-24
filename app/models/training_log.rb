@@ -22,6 +22,18 @@ class TrainingLog < ApplicationRecord
     trained_status == 'untrained'
   end
 
+  def transformed_data
+    data = Api::Application::Redis.get("training-#{id}-transformed")
+    return JSON.parse(data) if data.present?
+
+    transformed_data = NewsScraper::Transformers::TrainerArticle.new(
+      url: uri,
+      payload: open(uri).read
+    ).transform
+    Api::Application::Redis.set("training-#{id}-transformed", transformed_data.to_json)
+    transformed_data
+  end
+
   class << self
     def claim!(root_domain)
       where(root_domain: root_domain).update(trained_status: 'claimed')
