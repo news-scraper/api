@@ -8,7 +8,8 @@ class ScraperJob < ApplicationJob
         Rails.logger.info "#{a.root_domain} was not trained"
         log = TrainingLog.find_or_create_by!(
           root_domain: a.root_domain,
-          uri: a.uri
+          uri: a.uri,
+          query: args[:query]
         )
         log.transformed_data # Sets the transformed data in redis
       else
