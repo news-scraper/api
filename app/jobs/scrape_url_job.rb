@@ -8,6 +8,6 @@ class ScrapeUrlJob < ApplicationJob
       payload: payload
     ).transform
     transformed_article[:scrape_query] = ScrapeQuery.find_by(query: args[:query])
-    NewsArticle.find_or_create_by!(transformed_article)
+    NewsArticle.create!(transformed_article) unless NewsArticle.exists?(uri: args[:url])
   end
 end
