@@ -13,6 +13,8 @@ class ScraperJob < ApplicationJob
           url: a.url,
           scrape_query_id: scrape_query.id
         ) unless TrainingLog.exists?(url: a.url)
+      when "NewsScraper::ResponseError"
+        Rails.logger.error "#{a.url} returned an error: #{a.error_code}-#{a.message}"
       else
         Rails.logger.info "creating article for #{a[:url]}"
         NewsArticle.create!(a.merge(scrape_query_id: scrape_query.id)) unless NewsArticle.exists?(url: a[:url])
