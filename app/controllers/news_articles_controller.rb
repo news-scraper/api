@@ -1,6 +1,6 @@
 class NewsArticlesController < ApplicationController
   def index
-    @news_articles = NewsArticle.all
+    @news_articles = NewsArticle.all.order(created_at: :desc)
   end
 
   def articles
