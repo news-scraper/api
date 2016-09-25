@@ -30,7 +30,13 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   test "should create training_log" do
     assert_difference('TrainingLog.count') do
       post training_logs_url(format: :json),
-        params: { training_log: { root_domain: 'test_query', url: 'url' } },
+        params: {
+          training_log: {
+            root_domain: 'test_query',
+            url: 'https://www.google.ca',
+            query: scrape_queries(:one).query
+          }
+        },
         headers: authorized_headers
     end
 

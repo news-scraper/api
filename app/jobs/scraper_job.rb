@@ -8,16 +8,14 @@ class ScraperJob < ApplicationJob
       case a.class.to_s
       when "NewsScraper::Transformers::ScrapePatternNotDefined"
         Rails.logger.info "#{a.root_domain} was not trained"
-        log = TrainingLog.find_or_create_by!(
+        TrainingLog.create!(
           root_domain: a.root_domain,
           url: a.url,
-          scrape_query: scrape_query
-        )
-        log.transformed_data # Sets the transformed data in redis
+          scrape_query_id: scrape_query.id
+        ) unless TrainingLog.exists?(url: a.url)
       else
         Rails.logger.info "creating article for a[:url]"
-        a[:scrape_query] = scrape_query
-        NewsArticle.find_or_create_by!(a)
+        NewsArticle.create!(a.merge(scrape_query_id: scrape_query.id)) unless NewsArticle.exist?(url: a[:url])
       end
     end
   end

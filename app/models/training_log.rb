@@ -1,4 +1,5 @@
 class TrainingLog < ApplicationRecord
+  belongs_to :scrape_query
   validates :url, uniqueness: true
   validates :root_domain, :url, :trained_status, presence: true
   validates :trained_status, inclusion: {
@@ -9,6 +10,8 @@ class TrainingLog < ApplicationRecord
   scope :untrained, -> { where(trained_status: 'untrained') }
   scope :claimed, -> { where(trained_status: 'claimed') }
   scope :trained, -> { where(trained_status: 'trained') }
+
+  after_create :transformed_data # Sets the transformed data in redis
 
   def trained?
     trained_status == 'trained'
@@ -28,7 +31,7 @@ class TrainingLog < ApplicationRecord
 
     transformed_data = NewsScraper::Transformers::TrainerArticle.new(
       url: url,
-      payload: UrlResolver.resolve(url)
+      payload:  Net::HTTP.get_response(URI(url)).body
     ).transform
     Api::Application::Redis.set("training-#{id}-transformed", transformed_data.to_json)
     transformed_data
@@ -44,8 +47,8 @@ class TrainingLog < ApplicationRecord
     end
 
     def train!(root_domain)
-      where(root_domain: root_domain).update(trained_status: 'trained')
       ScrapeUrlJob.perform_later(root_domain: root_domain)
+      where(root_domain: root_domain).update(trained_status: 'trained')
     end
   end
 end

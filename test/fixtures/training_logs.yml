@@ -8,13 +8,16 @@ untrained:
   root_domain: google.ca
   url: https://google.ca/path
   trained_status: untrained
+  scrape_query: one
 
 claimed:
   root_domain: google.com
   url: https://google.com/path
   trained_status: claimed
+  scrape_query: one
 
 trained:
   root_domain: google.jp
   url: https://google.jp/path
   trained_status: trained
+  scrape_query: one

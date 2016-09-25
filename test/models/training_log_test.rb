@@ -26,4 +26,13 @@ class TrainingLogTest < ActiveSupport::TestCase
     assert training_logs(:untrained).untrained?
     assert training_logs(:trained).trained?
   end
+
+  test "create sets entry in redis" do
+    log = TrainingLog.create!(
+      root_domain: 'google.ca',
+      url: 'https://www.google.ca',
+      scrape_query_id: scrape_queries(:one).id
+    )
+    assert_not_nil Api::Application::Redis.get("training-#{log.id}-transformed")
+  end
 end

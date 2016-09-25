@@ -12,6 +12,7 @@ class TrainingLogsController < ApplicationController
 
   def create
     @training_log = TrainingLog.new(training_log_params)
+    @training_log.scrape_query = ScrapeQuery.find_by(query: params[:training_log][:query])
 
     if @training_log.save
       render :show, status: :created, location: @training_log
@@ -32,6 +33,6 @@ class TrainingLogsController < ApplicationController
   end
 
   def training_log_params
-    params.require(:training_log).permit(:root_domain, :url)
+    params.require(:training_log).permit(:root_domain, :url).except(:query)
   end
 end
