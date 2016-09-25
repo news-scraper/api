@@ -49,7 +49,7 @@ class TrainingLog < ApplicationRecord
     end
 
     def train!(root_domain)
-      ScrapeUrlJob.perform_later(root_domain: root_domain)
+      ScrapeDomainJob.perform_later(root_domain: root_domain)
       where(root_domain: root_domain).update(trained_status: 'trained')
     end
   end

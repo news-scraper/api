@@ -1,4 +1,4 @@
-class ScrapeUrlJob < ApplicationJob
+class ScrapeDomainJob < ApplicationJob
   queue_as :default
 
   def perform(args)
