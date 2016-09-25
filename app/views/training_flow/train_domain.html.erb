@@ -1,7 +1,7 @@
 <% content_for :header_title do %>Training <strong><%= @training_log.root_domain %></strong><% end %>
 
 <div class="alert alert-info">
-  <p>Training on URL: <strong><%= @training_log.uri %></strong></p>
+  <p>Training on URL: <strong><%= link_to @training_log.url %></strong></p>
   <p>Choose the appropriate option in each section.</p>
 </div>
 

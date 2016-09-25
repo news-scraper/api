@@ -3,9 +3,9 @@ class DomainEntry < ApplicationRecord
   validates :domain, presence: true
   validates :pattern,
     presence: {
-      message: -> (obj, _) do
+      message: lambda  do |obj, _|
         "requires that a pattern be set for #{obj.data_type} when method is #{obj.method}"
       end
     },
-    if: Proc.new { |d| %w(xpath css).include?(d.method) }
+    if: proc { |d| %w(xpath css).include?(d.method) }
 end

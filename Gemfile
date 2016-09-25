@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'jbuilder', '~> 2.5'
-gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'trainer-split'
+gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'configuration-proc'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'turbolinks', '~> 5'
 
@@ -31,6 +31,10 @@ gem 'ejson'
 group :development, :test do
   gem 'pry-byebug'
   gem 'rubocop'
+end
+
+group :test do
+  gem "fakeredis"
 end
 
 group :development do

@@ -29,8 +29,8 @@ GIT
 
 GIT
   remote: git@github.com:richardwu/news_scraper.git
-  revision: ca15bc0b91bffb4408b15a69a1963444c8dc156d
-  branch: trainer-split
+  revision: 9135e6cbf503a1cdcc1699a0d603ebad0f343fc8
+  branch: configuration-proc
   specs:
     news_scraper (0.1.2)
       htmlbeautifier (~> 1.1, >= 1.1.1)
@@ -122,6 +122,8 @@ GEM
     ejson (1.0.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    fakeredis (0.6.0)
+      redis (~> 3.2)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.14)
@@ -312,6 +314,7 @@ DEPENDENCIES
   capistrano3-puma
   devise!
   ejson
+  fakeredis
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails

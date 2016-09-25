@@ -1,5 +1,5 @@
 class NewsArticle < ApplicationRecord
-  validates :root_domain, :uri, presence: true
-  validates :uri, uniqueness: true
+  validates :root_domain, :url, presence: true
+  validates :url, uniqueness: true
   belongs_to :scrape_query
 end

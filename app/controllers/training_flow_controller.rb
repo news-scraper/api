@@ -28,9 +28,6 @@ class TrainingFlowController < ApplicationController
 
     respond_to do |format|
       if @domain.valid?
-        NewsScraper.configure do |config|
-          config.scrape_patterns['domains'] = Domain.hash
-        end
         @training_logs = TrainingLog.train!(@training_log.root_domain)
         format.json do
           render template: 'training_flow/state_change', locals: {

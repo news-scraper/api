@@ -1,3 +1,4 @@
+# rubocop:disable Rails/Output
 domains = %w(google.ca google.com google.jp)
 queries = %w(technology)
 statuses = %w(untrained trained claimed).cycle
@@ -7,7 +8,7 @@ domains.each do |domain|
   puts "Creating training_log for #{domain} with state #{status}"
   TrainingLog.create(
     root_domain: domain,
-    uri: "https://#{domain}/path",
+    url: "https://#{domain}/path",
     trained_status: status
   )
 end
@@ -28,7 +29,7 @@ queries.each do |query|
         datetime: DateTime.now.utc,
         title: "Title for #{domain}",
         root_domain: domain,
-        uri: "https://#{domain}/path/#{i}"
+        url: "https://#{domain}/path/#{i}"
       )
     end
   end

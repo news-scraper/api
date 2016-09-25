@@ -31,6 +31,6 @@ class TrainingLogsController < ApplicationController
   end
 
   def training_log_params
-    params.require(:training_log).permit(:root_domain, :uri)
+    params.require(:training_log).permit(:root_domain, :url)
   end
 end

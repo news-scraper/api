@@ -6,15 +6,15 @@
 #
 untrained:
   root_domain: google.ca
-  uri: https://google.ca/path
+  url: https://google.ca/path
   trained_status: untrained
 
 claimed:
   root_domain: google.com
-  uri: https://google.com/path
+  url: https://google.com/path
   trained_status: claimed
 
 trained:
   root_domain: google.jp
-  uri: https://google.jp/path
+  url: https://google.jp/path
   trained_status: trained
