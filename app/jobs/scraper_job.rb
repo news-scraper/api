@@ -2,7 +2,7 @@ class ScraperJob < ApplicationJob
   queue_as :default
 
   def perform(args)
-    scrape_query = ScrapeQuery.find_by(query: args[:query])
+    scrape_query = ScrapeQuery.find_or_create_by!(query: args[:query])
 
     NewsScraper::Scraper.new(query: args[:query]).scrape do |a|
       case a.class.to_s
@@ -14,8 +14,8 @@ class ScraperJob < ApplicationJob
           scrape_query_id: scrape_query.id
         ) unless TrainingLog.exists?(url: a.url)
       else
-        Rails.logger.info "creating article for a[:url]"
-        NewsArticle.create!(a.merge(scrape_query_id: scrape_query.id)) unless NewsArticle.exist?(url: a[:url])
+        Rails.logger.info "creating article for #{a[:url]}"
+        NewsArticle.create!(a.merge(scrape_query_id: scrape_query.id)) unless NewsArticle.exists?(url: a[:url])
       end
     end
   end
