@@ -27,18 +27,6 @@ GIT
       responders
       warden (~> 1.2.3)
 
-GIT
-  remote: git@github.com:richardwu/news_scraper.git
-  revision: a2db8403c40c27bd06d1eb5cb063170ca576b954
-  branch: configuration-proc
-  specs:
-    news_scraper (0.1.2)
-      htmlbeautifier (~> 1.1, >= 1.1.1)
-      httparty (~> 0.14, >= 0.14.0)
-      nokogiri (~> 1.6, >= 1.6.8)
-      ruby-readability (~> 0.7, >= 0.7.0)
-      sanitize (~> 4.2, >= 4.2.0)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -173,6 +161,13 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
+    news_scraper (1.0.0)
+      htmlbeautifier (~> 1.1, >= 1.1.1)
+      httparty (~> 0.14, >= 0.14.0)
+      nokogiri (~> 1.6, >= 1.6.8)
+      ruby-readability (~> 0.7, >= 0.7.0)
+      sanitize (~> 4.2, >= 4.2.0)
+      terminal-table (~> 1.5, >= 1.5.2)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -280,6 +275,8 @@ GEM
     sshkit (1.11.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    terminal-table (1.7.0)
+      unicode-display_width (~> 1.1)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -320,7 +317,7 @@ DEPENDENCIES
   jquery-rails
   letsencrypt_plugin
   listen (~> 3.0.5)
-  news_scraper!
+  news_scraper
   pg
   pry-byebug
   puma (~> 3.0)

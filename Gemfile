@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'jbuilder', '~> 2.5'
-gem 'news_scraper', git: 'git@github.com:richardwu/news_scraper.git', branch: 'configuration-proc'
+gem 'news_scraper'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'turbolinks', '~> 5'
 
