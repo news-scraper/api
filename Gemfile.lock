@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: git@github.com:richardwu/news_scraper.git
-  revision: 706978aafc3ec8eb0456187f7dd3f2e18c4fa55d
+  revision: a2db8403c40c27bd06d1eb5cb063170ca576b954
   branch: configuration-proc
   specs:
     news_scraper (0.1.2)

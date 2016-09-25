@@ -6,7 +6,8 @@
     </div>
     <div class="card-block">
       <span class="tag tag-default" %><%= news_article.root_domain %></span>
-      <span class="tag tag-default" %><%= news_article.section %></span>
+      <span class="tag tag-default" %>Section: <%= news_article.section %></span>
+      <span class="tag tag-default" %>Query: <%= news_article.scrape_query.query %></span>
       <p><%= news_article.description %></p>
       <%= link_to 'View Link', news_article.url, class: 'btn btn-primary', target: '_blank' %>
     </div>

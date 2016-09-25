@@ -16,6 +16,10 @@ nav.navbar {
       &.brand {
         border-right: 1px solid #fff;
         padding-right: 10px;
+
+        img {
+          border-radius: 10px;
+        }
       }
       a {
         color: #fff;
@@ -73,6 +77,10 @@ nav.navbar {
     height: 54px;
     font-size: 18px;
     line-height: 54px;
+
+    img {
+      border-radius: 30px;
+    }
 
     a {
       color: #999999;

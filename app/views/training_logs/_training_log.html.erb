@@ -5,7 +5,7 @@
       <span class="tag tag-default" %><%= training_log.trained_status %></span>
     </div>
     <div class="card-block">
-      <a href="http://<%= training_log.url %>" class="btn btn-info">View link</a>
+      <%= link_to 'View Link', training_log.url, class: "btn btn-info" %>
       <% unless training_log.trained? %>
         <%= link_to 'Train', train_domain_path(training_log), class: "btn btn-primary" %>
       <% end %>
