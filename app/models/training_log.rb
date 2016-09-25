@@ -44,10 +44,8 @@ class TrainingLog < ApplicationRecord
     end
 
     def train!(root_domain)
-      logs = where(root_domain: root_domain).update(trained_status: 'trained')
-      logs.each do |log|
-        ScrapeUrlJob.perform_later(url: log.url, root_domain: log.root_domain, query: log.query)
-      end
+      where(root_domain: root_domain).update(trained_status: 'trained')
+      ScrapeUrlJob.perform_later(root_domain: root_domain)
     end
   end
 end

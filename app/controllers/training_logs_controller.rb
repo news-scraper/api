@@ -4,6 +4,7 @@ class TrainingLogsController < ApplicationController
   def index
     @training_logs = TrainingLog.untrained
     @claimed_logs = TrainingLog.claimed
+    @trained_logs = TrainingLog.trained
   end
 
   def show
