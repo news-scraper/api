@@ -1,4 +1,6 @@
 class TrainingLog < ApplicationRecord
+  include NewsScraper::ExtractorsHelpers
+
   belongs_to :scrape_query
   validates :url, uniqueness: true
   validates :root_domain, :url, :trained_status, presence: true
@@ -31,7 +33,7 @@ class TrainingLog < ApplicationRecord
 
     transformed_data = NewsScraper::Transformers::TrainerArticle.new(
       url: url,
-      payload:  Net::HTTP.get_response(URI(url)).body
+      payload: http_request(url).body
     ).transform
     Api::Application::Redis.set("training-#{id}-transformed", transformed_data.to_json)
     transformed_data
