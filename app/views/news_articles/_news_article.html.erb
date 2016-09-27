@@ -12,7 +12,11 @@
       <%= link_to 'View Link', news_article.url, class: 'btn btn-primary', target: '_blank' %>
     </div>
     <div class="card-footer text-muted">
-      written <%= time_ago_in_words(news_article.datetime) %> ago
+      <% if news_article.datetime.present? %>
+        written <%= time_ago_in_words(news_article.datetime) %> ago
+      <% else %>
+        <strong>Article is missing a datetime</strong>
+      <% end %>
     </div>
     <div class="card-footer text-muted">
       added <%= time_ago_in_words(news_article.created_at) %> ago
