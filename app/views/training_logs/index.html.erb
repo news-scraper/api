@@ -34,6 +34,21 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Untrainable Logs</a>
+      </h4>
+    </div>
+    <div id="claimed" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+      <% @untrainable_logs.in_groups_of(3).each do |group| %>
+        <div class="row">
+          <%= render group.reject(&:nil?) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Trained Logs</a>
       </h4>
     </div>

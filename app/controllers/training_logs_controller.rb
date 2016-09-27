@@ -5,6 +5,7 @@ class TrainingLogsController < ApplicationController
     @training_logs = TrainingLog.untrained
     @claimed_logs = TrainingLog.claimed
     @trained_logs = TrainingLog.trained
+    @untrainable_logs = TrainingLog.untrainable
   end
 
   def show
