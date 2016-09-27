@@ -8,4 +8,8 @@ class DomainEntry < ApplicationRecord
       end
     },
     if: proc { |d| %w(xpath css).include?(d.method) }
+
+  def to_h
+    { 'method' => method, 'pattern' => pattern }
+  end
 end

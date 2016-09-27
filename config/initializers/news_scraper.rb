@@ -10,10 +10,28 @@ if Domain.table_exists?
   end
 end
 
+# Set the fetch_method, this will be called for any scrape
+# but makes live DB calls, so it means our config is always up to date
 @default_configuration = NewsScraper.configuration.scrape_patterns.dup
+
 NewsScraper.configure do |config|
   config.fetch_method = proc do
-    @default_configuration['domains'] = Domain.domain_hash
-    @default_configuration
+    configuration = @default_configuration.dup
+
+    # Override domains
+    configuration['domains'] = Domain.domain_hash
+
+    # Add to Presets
+    data_type_hashes = DomainEntry.all.group_by(&:data_type)
+    @default_configuration['data_types'].each do |dt|
+      gem_presets = @default_configuration['presets'][dt].dup
+      db_presets = data_type_hashes[dt].each_with_object({}) do |entry, acc|
+        should_add = !gem_presets.any? { |_, v| v['pattern'] == entry.pattern || entry.pattern.blank? }
+        acc[entry.id.to_s] = entry.to_h if should_add
+      end
+      configuration['presets'][dt] = gem_presets.merge(db_presets)
+    end
+
+    configuration
   end
 end
