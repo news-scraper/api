@@ -27,6 +27,17 @@ class TrainingFlowControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should mark training_logs untrainable" do
+    assert_difference('TrainingLog.claimed.count', -1) do
+      assert_difference('TrainingLog.untrainable.count') do
+        post untrainable_training_logs_url(id: training_logs(:claimed).id, format: :json),
+          params: { root_domain: training_logs(:claimed).root_domain },
+          headers: authorized_headers
+      end
+    end
+    assert_response :success
+  end
+
   test "should train training_logs" do
     claimed = training_logs(:claimed)
     Api::Application::Redis.set("training-#{claimed.id}-transformed", file_fixture('transformed.json').read)

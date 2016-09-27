@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   end
 
   controller :training_flow do
-    post 'training/log/:id/claim'   => :claim,        as: :claim_training_logs
-    post 'training/log/:id/unclaim' => :unclaim,      as: :unclaim_training_logs
-    post 'training/log/:id/train'   => :train,        as: :train_training_logs
-    get  'training/log/:id/train'   => :train_domain, as: :train_domain
+    post 'training/log/:id/claim'       => :claim,          as: :claim_training_logs
+    post 'training/log/:id/unclaim'     => :unclaim,        as: :unclaim_training_logs
+    post 'training/log/:id/untrainable' => :untrainable,    as: :untrainable_training_logs
+    post 'training/log/:id/train'       => :train,          as: :train_training_logs
+    get  'training/log/:id/train'       => :train_domain,   as: :train_domain
   end
 end

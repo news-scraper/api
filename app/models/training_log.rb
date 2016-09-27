@@ -5,13 +5,14 @@ class TrainingLog < ApplicationRecord
   validates :url, uniqueness: true
   validates :root_domain, :url, :trained_status, presence: true
   validates :trained_status, inclusion: {
-    in: %w(untrained claimed trained),
+    in: %w(untrained claimed trained untrainable),
     message: '%{value} is not a valid trained status'
   }
 
   scope :untrained, -> { where(trained_status: 'untrained') }
   scope :claimed, -> { where(trained_status: 'claimed') }
   scope :trained, -> { where(trained_status: 'trained') }
+  scope :untrainable, -> { where(trained_status: 'untrainable') }
 
   after_create :transformed_data # Sets the transformed data in redis
 
@@ -25,6 +26,10 @@ class TrainingLog < ApplicationRecord
 
   def untrained?
     trained_status == 'untrained'
+  end
+
+  def untrainable?
+    trained_status == 'untrainable'
   end
 
   def transformed_data
@@ -46,6 +51,10 @@ class TrainingLog < ApplicationRecord
 
     def unclaim!(root_domain)
       where(root_domain: root_domain).update(trained_status: 'untrained')
+    end
+
+    def untrainable!(root_domain)
+      where(root_domain: root_domain).update(trained_status: 'untrainable')
     end
 
     def train!(root_domain)
