@@ -5,6 +5,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'news_scraper'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'turbolinks', '~> 5'
+gem 'will_paginate', '~> 3.1.0'
 
 # Assets
 gem 'jquery-rails'

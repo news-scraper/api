@@ -5,3 +5,8 @@
     <%= render group.reject(&:nil?) %>
   </div>
 <% end %>
+
+<div class="text-center">
+  <%= will_paginate @news_articles, renderer: Pagination::BootstrapRenderer %>
+  <p><%= page_entries_info @news_articles %></p>
+</div>

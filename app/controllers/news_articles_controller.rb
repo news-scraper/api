@@ -1,6 +1,8 @@
 class NewsArticlesController < ApplicationController
   def index
-    @news_articles = NewsArticle.includes(:scrape_query).all.order(created_at: :desc)
+    @news_articles = NewsArticle.includes(:scrape_query)
+                                .order(created_at: :desc)
+                                .paginate(page: params[:page], per_page: 30)
   end
 
   def articles
