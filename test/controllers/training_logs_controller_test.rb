@@ -6,6 +6,7 @@ class TrainingLogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index as html" do
+    TrainingLog.any_instance.stubs(:options_for_all_data_types?)
     sign_in users(:one)
     get training_logs_url(format: :html)
     assert_response :success

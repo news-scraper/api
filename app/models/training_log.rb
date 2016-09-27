@@ -1,7 +1,8 @@
 class TrainingLog < ApplicationRecord
   include NewsScraper::ExtractorsHelpers
-
   belongs_to :scrape_query
+  has_many :news_articles, foreign_key: :root_domain, primary_key: :root_domain
+
   validates :url, uniqueness: true
   validates :root_domain, :url, :trained_status, presence: true
   validates :trained_status, inclusion: {

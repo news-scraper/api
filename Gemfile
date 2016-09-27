@@ -35,6 +35,7 @@ end
 
 group :test do
   gem "fakeredis"
+  gem 'mocha'
 end
 
 group :development do
