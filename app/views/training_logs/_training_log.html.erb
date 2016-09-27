@@ -7,13 +7,13 @@
     <div class="card-block">
       <%= link_to 'View Link', training_log.url, class: "btn btn-info" %>
       <% if training_log.claimed? %>
-        <%= link_to 'Mark unclaimed', unclaim_training_logs_path(training_log), class: 'btn btn-primary', method: :post %>
-        <%= link_to 'Mark untrainable', untrainable_training_logs_path(training_log), class: 'btn btn-primary', method: :post %>
-        <%= link_to 'Train', train_domain_path(training_log), class: "btn btn-primary" %>
+        <%= link_to 'Mark unclaimed', unclaim_training_logs_path(training_log), class: 'btn btn-outline-secondary btn-sm', method: :post %>
+        <%= link_to 'Mark untrainable', untrainable_training_logs_path(training_log), class: 'btn btn-outline-secondary btn-sm', method: :post %>
+        <%= link_to 'Train', train_domain_path(training_log), class: "btn btn-outline-primary btn-sm" %>
       <% elsif training_log.untrainable? %>
-        <%= link_to 'Mark unclaimed', unclaim_training_logs_path(training_log), class: 'btn btn-primary', method: :post %>
+        <%= link_to 'Mark unclaimed', unclaim_training_logs_path(training_log), class: 'btn btn-outline-secondary btn-sm', method: :post %>
       <% elsif training_log.untrained? %>
-        <%= link_to 'Train', train_domain_path(training_log), class: "btn btn-primary" %>
+        <%= link_to 'Train', train_domain_path(training_log), class: "btn btn-outline-primary btn-sm" %>
       <% end %>
     </div>
     <div class="card-footer text-muted">
