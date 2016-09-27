@@ -4,7 +4,7 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#untrained" aria-expanded="true" aria-controls="untrained">Untrained Logs</a>
+        <a data-toggle="collapse" data-parent="#accordion" href="#untrained" aria-expanded="true" aria-controls="untrained">Untrained Logs (<%= @training_logs.size %>)</a>
       </h4>
     </div>
     <div id="untrained" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -19,7 +19,7 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Claimed Logs</a>
+        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Claimed Logs (<%= @claimed_logs.size %>)</a>
       </h4>
     </div>
     <div id="claimed" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
@@ -34,7 +34,7 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#untrainable" aria-expanded="false" aria-controls="untrainable">Untrainable Logs</a>
+        <a data-toggle="collapse" data-parent="#accordion" href="#untrainable" aria-expanded="false" aria-controls="untrainable">Untrainable Logs (<%= @untrainable_logs.size %>)</a>
       </h4>
     </div>
     <div id="untrainable" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
@@ -49,7 +49,7 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Trained Logs</a>
+        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Trained Logs (<%= @trained_logs.size %>)</a>
       </h4>
     </div>
     <div id="claimed" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
