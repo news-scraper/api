@@ -15,7 +15,7 @@ class DomainEntry < ApplicationRecord
     noko_html = Nokogiri::HTML("<html></html>")
     case method
     when 'xpath'
-      noko_html.xpath("(#{pattern})[1]")
+      noko_html.xpath("(#{pattern})[1]", NewsScraper::Transformers::Nokogiri::Functions.new)
     when 'css'
       noko_html.css(pattern)
     end
