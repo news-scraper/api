@@ -32,6 +32,12 @@ class TrainingLog < ApplicationRecord
     trained_status == 'untrainable'
   end
 
+  def options_for_all_data_types?
+    transformed_data.except('url', 'root_domain').all? do |_, options|
+      options.any? { |_, vals| vals['data'].present? }
+    end
+  end
+
   def transformed_data
     data = Api::Application::Redis.get("training-#{id}-transformed")
     return JSON.parse(data) if data.present?

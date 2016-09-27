@@ -3,6 +3,9 @@
     <div class="card-header">
       <%= training_log.root_domain %>
       <span class="tag tag-default" %><%= training_log.trained_status %></span>
+      <% if training_log.options_for_all_data_types? %>
+        <span class="tag tag-info" %>All Options</span>
+      <% end %>
     </div>
     <div class="card-block">
       <%= link_to 'View Link', training_log.url, class: "btn btn-info btn-sm btn-block" %>
