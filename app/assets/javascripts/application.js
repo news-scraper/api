@@ -2,5 +2,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tether
-//= require bootstrap
+//= require dashboard
 //= require_tree .

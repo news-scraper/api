@@ -12,8 +12,7 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
-gem 'bootstrap', '~> 4.0.0.alpha3'
-gem "font-awesome-rails"
+gem 'dashboard', git: 'git@github.com:jules2689/dashboard.git'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

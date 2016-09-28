@@ -7,6 +7,6 @@
 <% end %>
 
 <div class="text-center">
-  <%= will_paginate @news_articles, renderer: Pagination::BootstrapRenderer %>
+  <%= will_paginate @news_articles, renderer: Pagination::Bootstrap4Renderer %>
   <p><%= page_entries_info @news_articles %></p>
 </div>

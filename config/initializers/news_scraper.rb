@@ -1,5 +1,5 @@
 # Load any new domains from the gem before overriding the fetch_method
-if Domain.table_exists?
+if Domain.table_exists? && DomainEntry.table_exists?
   NewsScraper.configuration.scrape_patterns['domains'].each do |root_domain, data_types|
     next if Domain.exists?(root_domain: root_domain)
     Rails.logger.info "[DOMAINS] Creating domain entry for #{root_domain}"

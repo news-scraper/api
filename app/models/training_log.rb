@@ -33,10 +33,14 @@ class TrainingLog < ApplicationRecord
     trained_status == 'untrainable'
   end
 
-  def options_for_all_data_types?
-    transformed_data.except('url', 'root_domain').all? do |_, options|
-      options.any? { |_, vals| vals['data'].present? }
+  def num_options_predefined
+    transformed_data.except('url', 'root_domain').sum do |_, options|
+      options.any? { |_, vals| vals['data'].present? } ? 1 : 0
     end
+  end
+
+  def num_options_available
+    transformed_data.except('url', 'root_domain').keys.count
   end
 
   def transformed_data

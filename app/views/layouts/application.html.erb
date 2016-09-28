@@ -12,7 +12,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= render 'layouts/authenticated_layout' %>
+      <%= render 'dashboard/layout', sidebar_image: image_tag('https://avatars3.githubusercontent.com/u/22282138?v=3&s=200', height: 30), sidebar_title: 'News Scraper', sidebar_links: navigation_links %>
     <% else %>
       <%= render 'layouts/components/toasts' %>
       <div class="container">

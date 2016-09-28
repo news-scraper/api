@@ -1,25 +1,30 @@
 <div class="col-xs">
-  <div class="card text-xs-center">
-    <div class="card-header">
-      <%= news_article.title %>
-      <p class="text-muted">by <%= news_article.author %></p>
-    </div>
-    <div class="card-block">
-      <span class="tag tag-default" %><%= news_article.root_domain %></span>
-      <span class="tag tag-default" %>Section: <%= news_article.section %></span>
-      <span class="tag tag-default" %>Query: <%= news_article.scrape_query.query %></span>
-      <p><%= news_article.description %></p>
-      <%= link_to 'View Link', news_article.url, class: 'btn btn-primary', target: '_blank' %>
-    </div>
-    <div class="card-footer text-muted">
-      <% if news_article.datetime.present? %>
-        written <%= time_ago_in_words(news_article.datetime) %> ago
-      <% else %>
-        <strong>Article is missing a datetime</strong>
-      <% end %>
-    </div>
-    <div class="card-footer text-muted">
-      added <%= time_ago_in_words(news_article.created_at) %> ago
-    </div>
-  </div>
+  <%= render 'dashboard/cards/card',
+    header: news_article.title,
+    sub_header: "by #{news_article.author}",
+    footer: "created #{time_ago_in_words(news_article.created_at)} ago",
+    additional_footer: capture { %>
+      <div class="card-footer text-muted">
+        <% if news_article.datetime.present? %>
+          written <%= time_ago_in_words(news_article.datetime) %> ago
+        <% else %>
+          <strong>Article is missing a datetime</strong>
+        <% end %>
+      </div>
+  <% } do %>
+    <span class="tag tag-default" %><%= news_article.root_domain %></span>
+    <span class="tag tag-default" %>Section: <%= news_article.section %></span>
+    <span class="tag tag-default" %>Query: <%= news_article.scrape_query.query %></span>
+    <p><%= news_article.description %></p>
+    <%= link_to 'View Link', news_article.url, class: 'btn btn-primary', target: '_blank' %>
+    <%= content_for :card_footer do %>
+      <div class="card-footer text-muted">
+        <% if news_article.datetime.present? %>
+          written <%= time_ago_in_words(news_article.datetime) %> ago
+        <% else %>
+          <strong>Article is missing a datetime</strong>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
