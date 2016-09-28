@@ -8,11 +8,15 @@ class ScraperJob < ApplicationJob
       case a.class.to_s
       when "NewsScraper::Transformers::ScrapePatternNotDefined"
         Rails.logger.info "#{a.root_domain} was not trained"
-        TrainingLog.create!(
-          root_domain: a.root_domain,
-          url: a.url,
-          scrape_query_id: scrape_query.id
-        ) unless TrainingLog.exists?(url: a.url)
+        unless TrainingLog.exists?(url: a.url)
+          params = {
+            root_domain: a.root_domain,
+            url: a.url,
+            scrape_query_id: scrape_query.id
+          }
+          params[:trained_status] = 'untrainable' if TrainingLog.find_by(root_domain: a.root_domain).try(:untrainable?)
+          TrainingLog.create!(params)
+        end
       when "NewsScraper::ResponseError"
         Rails.logger.error "#{a.url} returned an error: #{a.error_code}-#{a.message}"
       else
