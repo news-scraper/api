@@ -1,6 +1,5 @@
 class NewsArticlesController < ApplicationController
   def index
-    flash[:error] = "I'm a error"
     @news_articles = NewsArticle.includes(:scrape_query)
                                 .order(created_at: :desc)
                                 .paginate(page: params[:page], per_page: 30)
