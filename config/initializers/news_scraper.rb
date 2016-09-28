@@ -26,7 +26,8 @@ NewsScraper.configure do |config|
     @default_configuration['data_types'].each do |dt|
       gem_presets = @default_configuration['presets'][dt].dup
       db_presets = data_type_hashes[dt].each_with_object({}) do |entry, acc|
-        should_add = !gem_presets.any? { |_, v| v['pattern'] == entry.pattern || entry.pattern.blank? }
+        should_add = !gem_presets.any? { |_, v| v['pattern'] == entry.pattern || entry.pattern.blank? } &&
+                     !acc.any? { |_, v| v['pattern'] == entry.pattern || entry.pattern.blank? }
         acc[entry.id.to_s] = entry.to_h if should_add
       end
       configuration['presets'][dt] = gem_presets.merge(db_presets)
