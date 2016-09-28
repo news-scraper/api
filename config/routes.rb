@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   resources :scrape_queries, except: [:update, :edit, :new]
   resources :domains, except: [:edit, :new]
 
+  controller :users do
+    get 'users/profile' => :profile, as: :profile
+    put 'users/profile' => :update, as: :update_profile
+  end
+
   controller :news_articles do
     get 'news_articles' => :index, as: :news_articles
     get 'news_articles/:query' => :articles, as: :news_articles_by_query
