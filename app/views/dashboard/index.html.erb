@@ -1,5 +1,10 @@
 <% content_for :header_title do %>Dashboard<% end %>
 
+<%= render 'dashboard/cards/graph', type: 'primary',
+                                    chart_type: 'line',
+                                    inverse: true,
+                                    header: 'News articles over time',
+                                    data: NewsArticle.group_by_day(:created_at, timezone: 'Toronto').count %>
 
 <% [Domain, NewsArticle, User, TrainingLog].in_groups_of(3).each do |group| %>
   <div class="row">

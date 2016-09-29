@@ -8,11 +8,14 @@ GIT
 
 GIT
   remote: git@github.com:jules2689/dashboard.git
-  revision: 702e1df7b12785c090527a3ef55bf8993a65b5c7
+  revision: c44378701472c7a67afed95bf24d9ac537847657
   specs:
     dashboard (0.1.0)
       bootstrap (~> 4.0.0.alpha3)
+      chartkick
       font-awesome-rails (~> 4.6.0, >= 4.6.0)
+      groupdate
+      hightop
       rails (~> 5.0.0, >= 5.0.0.1)
       rails-assets-tether (>= 1.1.0)
       sass-rails (~> 5.0)
@@ -114,6 +117,7 @@ GEM
     capistrano3-puma (1.2.1)
       capistrano (~> 3.0)
       puma (>= 2.6)
+    chartkick (2.1.1)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
@@ -130,7 +134,11 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.0.2)
+      activesupport (>= 3)
     guess_html_encoding (0.0.11)
+    hightop (0.1.4)
+      activerecord
     htmlbeautifier (1.2.0)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
