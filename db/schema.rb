@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929022151) do
+ActiveRecord::Schema.define(version: 20160929022405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160929022151) do
     t.index ["root_domain", "trained_status"], name: "index_training_logs_on_root_domain_and_trained_status", using: :btree
     t.index ["root_domain"], name: "index_training_logs_on_root_domain", using: :btree
     t.index ["scrape_query_id"], name: "index_training_logs_on_scrape_query_id", using: :btree
+    t.index ["trained_status", "updated_at"], name: "index_training_logs_on_trained_status_and_updated_at", using: :btree
     t.index ["trained_status"], name: "index_training_logs_on_trained_status", using: :btree
     t.index ["url"], name: "index_training_logs_on_url", unique: true, using: :btree
   end

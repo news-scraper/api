@@ -6,6 +6,12 @@
                                     header: 'News articles over time',
                                     data: NewsArticle.group_by_day(:created_at, timezone: 'Toronto').count %>
 
+<%= render 'dashboard/cards/graph', type: 'primary',
+                                    chart_type: 'line',
+                                    inverse: true,
+                                    header: 'Logs trained over time',
+                                    data: TrainingLog.trained.group_by_day(:updated_at, timezone: 'Toronto').count %>
+
 <% [Domain, NewsArticle, User, TrainingLog].in_groups_of(3).each do |group| %>
   <div class="row">
     <% group.reject(&:nil?).each do |obj_class| %>
