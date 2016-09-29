@@ -14,5 +14,8 @@ data_sources:
     # true by default
     # use_transaction: false
 
+    smart_columns:
+      scrape_query_id: "SELECT id, query FROM scrape_queries WHERE id IN {value}"
+
 audit: true
 time_zone: "Eastern Time (US & Canada)"
