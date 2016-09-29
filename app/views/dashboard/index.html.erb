@@ -5,7 +5,7 @@
   <div class="row">
     <% group.reject(&:nil?).each do |obj_class| %>
       <div class="col-xs">
-        <%= render 'layouts/number_card', header: "# of #{obj_class.to_s.tableize.humanize(capitalize: false)}",
+        <%= render 'dashboard/cards/number', header: "# of #{obj_class.to_s.tableize.humanize(capitalize: false)}",
                                           inverse: true,
                                           type: 'primary',
                                           number: obj_class.count %>

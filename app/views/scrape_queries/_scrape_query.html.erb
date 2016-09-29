@@ -1,3 +1,6 @@
-<%= render 'dashboard/cards/card',
-    header: scrape_query.query,
-    footer: "added #{time_ago_in_words(scrape_query.created_at)} ago" %>
+<div class="col-xs">
+  <%= render 'dashboard/cards/number', inverse: true,
+                                       type: 'primary',
+                                       number: scrape_query.query,
+                                       sub_header:  "added #{time_ago_in_words(scrape_query.created_at)} ago" %>
+</div>
