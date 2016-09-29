@@ -15,9 +15,7 @@
         <% else %>
           <strong>Article is missing a datetime</strong>
         <% end %>
-      </small>
-    </p>
-    <p class="card-text">
+      </small></br>
       <small class="text-muted">
         scraped <%= time_ago_in_words(news_article.created_at) %> ago
       </small>
