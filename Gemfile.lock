@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git@github.com:jules2689/dashboard.git
-  revision: b2b48a40bc43d232885645eef0e9b05edeabdd60
+  revision: 702e1df7b12785c090527a3ef55bf8993a65b5c7
   specs:
     dashboard (0.1.0)
       bootstrap (~> 4.0.0.alpha3)

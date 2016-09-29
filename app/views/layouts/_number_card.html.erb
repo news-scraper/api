@@ -1,0 +1,9 @@
+<div class="card <%= options_to_class(local_assigns) %>">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+      <% if defined?(header) %><h4 class="card-title"><%= header %></h4><% end %>
+      <% if defined?(sub_header) %><p class="text-muted"><%= sub_header %></p><% end %>
+      <h2><%= number %></h2>
+    </blockquote>
+  </div>
+</div>

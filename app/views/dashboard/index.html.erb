@@ -1,0 +1,15 @@
+<% content_for :header_title do %>Dashboard<% end %>
+
+
+<% [Domain, NewsArticle, User, TrainingLog].in_groups_of(3).each do |group| %>
+  <div class="row">
+    <% group.reject(&:nil?).each do |obj_class| %>
+      <div class="col-xs">
+        <%= render 'layouts/number_card', header: "# of #{obj_class.to_s.tableize.humanize(capitalize: false)}",
+                                          inverse: true,
+                                          type: 'primary',
+                                          number: obj_class.count %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

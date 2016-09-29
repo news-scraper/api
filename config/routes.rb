@@ -7,10 +7,14 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  root 'training_logs#index'
+  root 'dashboard#index'
 
   resources :scrape_queries, except: [:update, :edit, :new]
   resources :domains, except: [:edit, :new]
+
+  controller :dashboard do
+    get 'dashboard' => :index, as: :dashboard
+  end
 
   controller :users do
     get 'users/profile' => :profile, as: :profile
