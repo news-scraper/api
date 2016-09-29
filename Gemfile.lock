@@ -7,6 +7,15 @@ GIT
       sidekiq (>= 3.4)
 
 GIT
+  remote: git@github.com:jules2689/blazer.git
+  revision: 27719d2661f19820ee07f23de87dcd6f63dd5580
+  specs:
+    blazer (1.7.0)
+      chartkick
+      rails
+      safely_block (>= 0.1.1)
+
+GIT
   remote: git@github.com:jules2689/dashboard.git
   revision: c44378701472c7a67afed95bf24d9ac537847657
   specs:
@@ -93,10 +102,6 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindata (2.3.3)
-    blazer (1.7.0)
-      chartkick
-      rails
-      safely_block (>= 0.1.1)
     bootstrap (4.0.0.alpha4)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
@@ -332,7 +337,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blazer
+  blazer!
   capistrano (~> 3.6)
   capistrano-bundler
   capistrano-chruby

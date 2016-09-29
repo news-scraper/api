@@ -6,7 +6,7 @@ gem 'news_scraper'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'turbolinks', '~> 5'
 gem 'will_paginate', '~> 3.1.0'
-gem 'blazer'
+gem 'blazer', git: 'git@github.com:jules2689/blazer.git'
 
 # Assets
 gem 'jquery-rails'
