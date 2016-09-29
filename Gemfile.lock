@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git@github.com:jules2689/blazer.git
-  revision: 27719d2661f19820ee07f23de87dcd6f63dd5580
+  revision: b6247de6e74490e0091715e08cfbeb0451862006
   specs:
     blazer (1.7.0)
       chartkick
