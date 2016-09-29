@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount LetsencryptPlugin::Engine, at: '/'
   authenticate :user do
     mount Sidekiq::Web => '/sidekiq'
+    mount Blazer::Engine, at: "blazer"
   end
 
   root 'dashboard#index'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   controller :dashboard do
     get 'dashboard' => :index, as: :dashboard
+    get 'database' => :database
   end
 
   controller :users do

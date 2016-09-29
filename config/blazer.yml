@@ -1,0 +1,18 @@
+# see https://github.com/ankane/blazer for more info
+
+data_sources:
+  main:
+    url: <%= Rails.application.secrets.postgres_read_only_url %>
+    timeout: 15
+    cache:
+      mode: slow # or all
+      expires_in: 60 # min
+      slow_threshold: 15 # sec, only used in slow mode
+
+    # wrap queries in a transaction for safety
+    # not necessary if you use a read-only user
+    # true by default
+    # use_transaction: false
+
+audit: true
+time_zone: "Eastern Time (US & Canada)"

@@ -71,17 +71,14 @@ namespace :deploy do
       end
 
       # Secrets.yml
-      if test("[ ! -f #{shared_path}/config/secrets.yml ]")
-        puts "Uploading secrets.yml to production"
-        execute "touch #{shared_path}/config/secrets.yml"
-        Dir.mktmpdir do |dir|
-          yaml = YAML.load_file('config/secrets.yml')
-          yaml['production']['secret_key_base'] = `bundle exec rake secret`.strip
-          yaml['production']['devise_secret'] = `bundle exec rake secret`.strip
-          yaml['production']['devise_pepper'] = `bundle exec rake secret`.strip
-          File.write("#{dir}/secrets.yml", yaml.to_yaml)
-          upload! "#{dir}/secrets.yml", "#{shared_path}/config/secrets.yml"
-        end
+      puts "Parsing and uploading secrets.yml"
+      public_key = JSON.parse(File.read('config/secrets.ejson'))['_public_key']
+      raise "Public Key for JSON wasn't found" unless File.exist?("/opt/ejson/keys/#{public_key}")
+      prod_secrets = JSON.parse(`ejson decrypt config/secrets.ejson`)
+      execute "touch #{shared_path}/config/secrets.yml"
+      Dir.mktmpdir do |dir|
+        File.write("#{dir}/secrets.yml", prod_secrets.to_yaml)
+        upload! "#{dir}/secrets.yml", "#{shared_path}/config/secrets.yml"
       end
     end
   end
