@@ -14,6 +14,7 @@ class TrainingLog < ApplicationRecord
   scope :claimed, -> { where(trained_status: 'claimed') }
   scope :trained, -> { where(trained_status: 'trained') }
   scope :untrainable, -> { where(trained_status: 'untrainable') }
+  default_scope { order(root_domain: :desc) }
 
   after_create :transformed_data # Sets the transformed data in redis
 
