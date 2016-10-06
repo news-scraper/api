@@ -2,10 +2,10 @@ class TrainingLogsController < ApplicationController
   before_action :set_training_log, only: [:show, :train_domain, :train, :claim, :unclaim]
 
   def index
-    @training_logs = TrainingLog.untrained
-    @claimed_logs = TrainingLog.claimed
-    @trained_logs = TrainingLog.trained
-    @untrainable_logs = TrainingLog.untrainable
+    @training_logs = TrainingLog.untrained.order(root_domain: :desc)
+    @claimed_logs = TrainingLog.claimed.order(root_domain: :desc)
+    @trained_logs = TrainingLog.trained.order(root_domain: :desc)
+    @untrainable_logs = TrainingLog.untrainable.order(root_domain: :desc)
   end
 
   def show
