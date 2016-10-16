@@ -166,7 +166,7 @@ GEM
     hightop (0.1.4)
       activerecord
     htmlbeautifier (1.2.0)
-    http-cookie (1.0.2)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
@@ -222,7 +222,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
-    news_scraper (1.1.0)
+    news_scraper (1.1.1)
       highscore (~> 1.2.0, >= 1.2.0)
       htmlbeautifier (~> 1.1, >= 1.1.1)
       httparty (~> 0.14, >= 0.14.0)
