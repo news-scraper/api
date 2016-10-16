@@ -33,6 +33,11 @@ class TrainingLogTest < ActiveSupport::TestCase
       url: 'https://www.google.ca',
       scrape_query_id: scrape_queries(:one).id
     )
-    assert_not_nil Api::Application::Redis.get("training-#{log.id}-transformed")
+    assert_not_nil Api::Application::Redis.get(log.transformed_data_redis_key)
+  end
+
+  test "transformed_data_redis_key" do
+    log = training_logs(:untrained)
+    assert_equal "training-#{log.id}-transformed", log.transformed_data_redis_key
   end
 end

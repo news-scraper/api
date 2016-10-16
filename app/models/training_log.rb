@@ -44,7 +44,7 @@ class TrainingLog < ApplicationRecord
   end
 
   def transformed_data
-    data = Api::Application::Redis.get("training-#{id}-transformed")
+    data = Api::Application::Redis.get(transformed_data_redis_key)
     return JSON.parse(data) if data.present?
 
     transformed_data = NewsScraper::Transformers::TrainerArticle.new(
@@ -53,6 +53,10 @@ class TrainingLog < ApplicationRecord
     ).transform
     Api::Application::Redis.set("training-#{id}-transformed", transformed_data.to_json)
     transformed_data
+  end
+
+  def transformed_data_redis_key
+    "training-#{id}-transformed"
   end
 
   class << self

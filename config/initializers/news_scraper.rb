@@ -1,4 +1,4 @@
-# Load any new domains from the gem before overriding the fetch_method
+# Load any new domains from the gem before overriding the scrape_patterns_fetch_method
 if Domain.table_exists? && DomainEntry.table_exists?
   NewsScraper.configuration.scrape_patterns['domains'].each do |root_domain, data_types|
     next if Domain.exists?(root_domain: root_domain)
@@ -10,12 +10,12 @@ if Domain.table_exists? && DomainEntry.table_exists?
   end
 end
 
-# Set the fetch_method, this will be called for any scrape
+# Set the scrape_patterns_fetch_method, this will be called for any scrape
 # but makes live DB calls, so it means our config is always up to date
 @default_configuration = NewsScraper.configuration.scrape_patterns.dup
 
 NewsScraper.configure do |config|
-  config.fetch_method = proc do
+  config.scrape_patterns_fetch_method = proc do
     configuration = @default_configuration.dup
 
     # Override domains
