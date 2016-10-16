@@ -1,0 +1,207 @@
+domains:
+  cnn.com:
+    - data_type: title
+      method: xpath
+      pattern: "//meta[@property='og:title']/@content"
+    - data_type: datetime
+      method: xpath
+      pattern: "//meta[@name='date']/@content"
+    - data_type: section
+      method: xpath
+      pattern: "//meta[@name='section']/@content"
+    - data_type: keywords
+      method: xpath
+      pattern: "//meta[@name='keywords']/@content"
+    - data_type: description
+      method: xpath
+      pattern: "//meta[@name='description']/@content"
+    - data_type: body
+      method: readability
+      pattern: ''
+    - data_type: author
+      method: xpath
+      pattern: "//meta[@name='author']/@content"
+  usatoday.com:
+    - data_type: title
+      method: xpath
+      pattern: "//meta[@property='og:title']/@content"
+    - data_type: datetime
+      method: xpath
+      pattern: //meta[@itemprop="datePublished"]/@content
+    - data_type: section
+      method: xpath
+      pattern: //meta[@itemprop="articleSection"]/@content
+    - data_type: keywords
+      method: xpath
+      pattern: "//meta[@name='news_keywords']/@content"
+    - data_type: description
+      method: xpath
+      pattern: "//meta[@name='description']/@content"
+    - data_type: body
+      method: readability
+      pattern: ''
+    - data_type: author
+      method: xpath
+      pattern: "//a[@rel='author']"
+  appleinsider.com:
+    - data_type: title
+      method: xpath
+      pattern: "//title"
+    - data_type: datetime
+      method: xpath
+      pattern: substring-before(//p[contains(@class, 'byline')]/span/text(), '(')
+    - data_type: section
+      method: xpath
+      pattern: //meta[@property="og:site_name"]/@content
+    - data_type: keywords
+      method: xpath
+      pattern: "//meta[@name='keywords']/@content"
+    - data_type: description
+      method: xpath
+      pattern: "//meta[@name='description']/@content"
+    - data_type: body
+      method: readability
+      pattern: ''
+    - data_type: author
+      method: xpath
+      pattern: "//p[contains(@class, 'byline')]/a/text()"
+training_logs:
+  - root_domain: cnn.com
+    url: http://money.cnn.com/2016/09/23/technology/verge-chris-ziegler/
+    trained_status: trained
+  - root_domain: usatoday.com
+    url: http://www.usatoday.com/story/tech/news/2016/09/23/iphone-7-sales-boom-and-bust-and-so-apple-shares/90698064/
+    trained_status: trained
+  - root_domain: appleinsider.com
+    url: http://appleinsider.com/articles/16/09/25/apple-celebrates-grand-opening-of-first-retail-store-in-mexico
+    trained_status: trained
+articles:
+  - author: Heather Kelly
+    body: "<div>\n  <div> \n    <div>    </div>\n    <h2>Often a new job in technology
+      is announced with a tweet about some \"personal news,\" followed by a flood of
+      congratulations. Verge deputy editor Chris Ziegler took a more subtle approach.</h2>\n
+      \    \n    <p> The Verge on Friday said it discovered Ziegler had taken a job
+      at Apple in July, but he never informed the tech publication or quit his job.
+      Instead, Ziegler stopped filing articles and communicating with his bosses altogether.
+      </p>\n      \n    <p> \"During that period, in the dark and concerned for Chris,
+      we made every effort to contact him and to offer him help if needed,\" said Nilay
+      Patel, The Verge's editor-in-chief,<a href=\"http://www.theverge.com/2016/9/23/13036012/a-note-from-the-editor-in-chief-about-chris-ziegler\">
+      in a blog post</a>. </p>\n     \n    <p> For months he was technically an employee
+      at both companies, a news outlet that writes about technology and one of the biggest
+      technology companies in the world, according to Patel. The Verge, which is owned
+      by Vox Media, said it discovered Ziegler's Apple employment in early September
+      and immediately terminated him. </p>\n     \n    <p> <a href=\"http://money.cnn.com/2016/06/03/media/vox-editor-suspended-trump-riots/\">Related:
+      Vox suspends editor for encouraging riots at Donald Trump rallies</a> </p>\n     \n
+      \   <p> Patel said the company was disclosing the odd situation in an attempt
+      to be transparent about any potential ethical concerns. </p>\n     \n    <p> \"Obviously
+      having an Apple employee on The Verge staff is a conflict of interest,\" Patel
+      wrote. </p>\n     \n    <p> The situation doesn't seem to be an elaborate attempt
+      at playing double agent, either using insider Apple access for journalism scoops
+      or journalism access to place positive Apple coverage. Ziegler was only actively
+      working for The Verge in July before ceasing communications. And an internal review
+      led by Vox Media's Editorial Director Lockhart Steele found no evidence that Ziegler
+      tried to influence Verge coverage to favor of Apple. </p>\n     \n    <p> Ziegler
+      has not <a href=\"https://twitter.com/zpower\">tweeted</a> since August and he
+      did not respond to requests to comment or share his side of the story. Apple also
+      did not immediately respond to requests to comment or confirm what role Ziegler
+      took on at the company. </p>\n     \n    <p> \"Chris accepted a position with
+      Apple, stopped communicating with The Verge's leadership, and his employment at
+      The Verge was terminated,\" said a Vox spokesperson in a statement. \"After a
+      thorough investigation, it was determined that there was no impact on editorial
+      decisions or journalism produced at The Verge or elsewhere in Vox Media.\" </p>\n
+      \      \n    <p>  CNNMoney (San Francisco)  First published September 23, 2016:
+      8:57 PM ET </p>\n     </div>\n</div>"
+    description: Reporter Chris Ziegler took a new gig at Apple, but neglected to quit
+      his job as a tech reporter at The Verge.
+    keywords: The Verge, Vox Media, Media, Apple, tech, tech reporting, reporters, reporting
+    section: technology
+    datetime: '2016-09-23 08:57:48.000000000 Z'
+    title: Verge editor secretly worked at Apple for months
+    root_domain: cnn.com
+    url: http://money.cnn.com/2016/09/23/technology/verge-chris-ziegler/
+  - author: Jon Swartz
+    body: |-
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div><img src="http://www.gannett-cdn.com/-mm-/4cfd2c99c7b7c7f7b4ed8349f6bf491cbe60234a/c=0-560-5465-3648&amp;r=1280x720&amp;r=540/local/-/media/2016/09/07/USATODAY/USATODAY/636088545946933729-GTY-599933066.jpg" /></div>
+              </div>
+              <div>
+                <p>
+                  Jefferson Graham goes hands on with the new iPhone 7, showing off new features at an Apple event in San Francisco. Produced by Theresa Chong.
+          Video by Theresa Chong</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>A Chinese couple tests the new iPhone 7 during the opening sale launch at an Apple store in Shanghai. (Photo: Johannes Eisele, AFP/Getty Images)</div>
+          </div>
+          <p>SAN FRANCISCO — The preliminary numbers are in, and Apple's latest iPhone looks like a pleasant surprise and a dud. It all depends on whom you ask.</p>
+          <p>Analysts' estimates vary on initial sales of the iPhone 7 and iPhone 7 Plus, underscoring an ongoing debate on whether the model is a hit or merely a bridge to next year's highly anticipated 10-year-anniversary version of iPhone.</p>
+          <p>On Friday, the glass was half-empty. Investors dumped shares on heavy volume after a market research firm in Germany, GfK, reportedly showed soft sales in Europe for iPhone 7. Apple shares (<a href="/money/lookup/stocks/AAPL/">AAPL</a>), which had climbed 6% since the company's Sept. 7 launch event, lost 1.7% to $112.71 and <a href="/story/money/2016/09/23/sp-500-dow-jones-industrial-average-stocks/90898748/">dragged on the Dow Jones Industrial Average</a>.</p>
+          <p>Angelo Zino, senior equity analyst at S&amp;P Global Market Intelligence, forecast global sales of 13 million units for the first weekend after iPhone 7 and 7 Plusses hit stores on Friday Sept. 16.  He noted Apple was initially shipping the new models to 28 countries this year, compared with a dozen last year, which could further strain supplies, and he predicted low single-digit declines in year-over-year iPhone sales for the September and December quarters.</p>
+          <p>“I've owned every iPhone since the first, and this is my tipping point. I'm headed to Android,” says Erick Sanchez, 30, a communications consultant in Washington, D.C., who started a petition to bring back the headphone jack missing from iPhone 7. “I love Apple, but I can't believe I'm at a point where I'm charging a phone, a watch, and a set of headphones while other companies are mastering wireless charging.”</p>
+          <p>But there were also plenty of optimists, sentiment that had buoyed shares for the last week.</p>
+          <p>"Steady positive news" from the U.S., UK and Japan "implies demand is stronger than thought" for iPhone 7, Nomura analyst Jeffrey Kvaal said in a note Thursday. He now expects Apple to sell 78 million iPhones for its December quarter, eclipsing analysts' consensus of 75 million.</p>
+          <p>"The travails of the Note 7 can only be helping," Kvaal said, alluding<a href="/story/tech/news/2016/09/15/samsung-recalls-1m-note-7-phones/90427540/"> to the recall this month of the Samsung Galaxy Note 7</a> in the U.S. because of instances of burning batteries.</p>
+          <p>Analyst Gene Munster of Piper Jaffray said iPhone 7 stormed out of the gates in its opening weekend with 14.3 million unit sales, up 10% from the debut of iPhone 6S a year earlier.</p>
+          <p>"I was hesitant about the new operating system, but I'm happy with it," say Rachel Sobel, a 39-year-old writer in Boca Raton, Fla., who pre-ordered an iPhone 7 Plus to replace her iPhone 6.</p>
+          <p>Apple chose not to report first-weekend iPhone sales, as it has the past  years, because it is "at a point where we know before taking the first customer pre-order that we will sell out of iPhone 7,” Apple said in a statement Thursday. “These initial sales will be governed by supply, not demand, and we have decided that it is no longer a representative metric for our investors and customers.”</p>
+          <p>Who's buying iPhone 7, iPhone 7 Plus</p>
+          <p>A thumb-nail sketch of those buyers reveals deeply loyal Apple customers equally attracted to both models. Nearly all of them — 98%, the highest percentage of iPhone launch customers — already used iPhones. By comparison, the figure was 88% for the launch of iPhone 6S and 90% for both iPhone 6 and iPhone 5S, according to Munster’s report issued Monday.</p>
+          <p>Meanwhile, more than half, 54%, opted for iPhone 7 and 46% for iPhone 7 Plus -- essentially the reverse of the iPhone 6 and iPhone 6S launch.</p>
+          <p>Munster also found 65% of iPhone owners, displeased with modest improvements to the 7, said they won't upgrade to it this fall, up from 56% in July.</p>
+          <p>Follow USA TODAY San Francisco Bureau Chief Jon Swartz @jswartz on Twitter.</p>
+          <p>Read or Share this story: http://usat.ly/2dpZwTc</p>
+        </div>
+      </div>
+    description: The glass was half-full on Friday as investors fled the stock.
+    keywords: Apple, iPhone 7, iPhone 7 Plus, weekend sales, Samsung, Apple shares
+    section: tech,news
+    datetime: '2016-09-23 16:00:20.777000000 Z'
+    title: iPhone 7 sales are boom and bust, and so are Apple shares
+    root_domain: usatoday.com
+    url: http://www.usatoday.com/story/tech/news/2016/09/23/iphone-7-sales-boom-and-bust-and-so-apple-shares/90698064/
+  - author: Mikey Campbell
+    body: "<div>\n  <div>\n     \n\t\t\n\t\t\n\t\t\n    <h1>Apple celebrates grand opening
+      of first retail store in Mexico</h1>\n    <p>\n      By <a href=\"mailto:mikeycampbell@gmail.com\">Mikey
+      Campbell</a>\n      Sunday, September 25, 2016, 02:55 am PT (05:55 am ET)\n\t\t</p>\n
+      \   Apple on Saturday opened the doors to thousands of waiting customers at its
+      first brick-and-mortar retail store in Mexico, the first step in a planned expansion
+      into the burgeoning Latin American smartphone market. &#13;\nAlong with photos
+      of the grand opening shared in a published press release, Apple CEO Tim Cook celebrated
+      the event on Twitter, saying, \"¡Gracias México por recibirnos!\" or \"Thanks
+      for welcoming us, Mexico!\" Customers eager to be one of the first to enter Apple's
+      first official Mexican store began lining up outside the Via Santa Fe wing of
+      Via Centro Santa Fe mall at 7 p.m. on Friday night. To drum up excitement for
+      the launch, the company invited customers to the store in an email campaign on
+      Wednesday.As noted by AppleInsider reader Alvaro, a colorful image accompanying
+      the invitation drew inspiration from decorations adorning mariachi boats floating
+      along the Xochimilco canals in southern Mexico City. That same image can be seen
+      above, displayed on the massive 37-foot, custom-built TV screen that sits as the
+      centerpiece at Apple Via Santa Fe. Taking cues from Apple's \"next generation\"
+      retail design language, the Mexico City store also features a Genius Bar, custom
+      wooden cabinetry for accessories, iconic wooden display tables and space for in-store
+      classes. Construction of the outlet began in July and resulted in a storefront
+      roughly three times larger than Via Santa Fe's usual boutiques.Apple Via Santa
+      Fe is the first phase of an aggressive push into Latin America, sources told AppleInsider
+      in January. At least two stores are planned for Mexico City, one being a \"global
+      flagship,\" along with satellite locations in Guadalajara and Monterrey. Beyond
+      Mexico, the company is working to expand into nearby countries Argentina, Chile
+      and Peru, sources said.\n\t\t\n\t\t\t</div>\n</div>"
+    description: Apple on Saturday opened the doors to thousands of waiting customers
+      at its first brick-and-mortar retail store in Mexico, the first step in a planned
+      expansion into the burgeoning Latin American smartphone market.
+    keywords: Apple, Apple Inc, iPhone, iPad, iPod touch, iPod nano, Apple TV, Apple,
+      iPod shuffle, iphone 6, iphone 6s, ios 9, ios9, iTunes, i mac, mac os x, mac osx,
+      Apple Computer, Apple Computer Inc., Mac OS X, iMac, iBook, Mac Pro, MacBook Pro,
+      Magic Pad, Magic Mouse, iPod classic, App Store, iTunes Store, iBook Store, mac
+      book, Microsoft, Adobe, Research in Motion, RIM, Nokia, Samsung, Google, Nvidia,
+      Intel
+    section: AppleInsider
+    datetime: '2016-09-25 02:55:00.000000000 Z'
+    title: Apple celebrates grand opening of first retail store in Mexico
+    root_domain: appleinsider.com
+    url: http://appleinsider.com/articles/16/09/25/apple-celebrates-grand-opening-of-first-retail-store-in-mexico

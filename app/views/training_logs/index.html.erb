@@ -1,63 +1,17 @@
-<% content_for :header_title do %>Training Logs<% end %>
+<% content_for :header_title do %><%= params[:log_type].capitalize %> Training Logs<% end %>
 
-<div id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#untrained" aria-expanded="true" aria-controls="untrained">Untrained Logs (<%= @training_logs.size %>)</a>
-      </h4>
-    </div>
-    <div id="untrained" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <% @training_logs.in_groups_of(3).each do |group| %>
-        <div class="row">
-          <%= render group.reject(&:nil?) %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+<nav class="nav nav-inline">
+  <% %w(untrained claimed trained untrainable).each do |log_type| %>
+    <%= link_to log_type, training_logs_path(log_type: log_type), class: 'nav-link' + (log_type == params[:log_type] ? ' active' : '') %>
+  <% end %>
+</nav>
 
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Claimed Logs (<%= @claimed_logs.size %>)</a>
-      </h4>
-    </div>
-    <div id="claimed" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
-      <% @claimed_logs.in_groups_of(3).each do |group| %>
-        <div class="row">
-          <%= render group.reject(&:nil?) %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+<hr />
 
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#untrainable" aria-expanded="false" aria-controls="untrainable">Untrainable Logs (<%= @untrainable_logs.size %>)</a>
-      </h4>
-    </div>
-    <div id="untrainable" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
-      <% @untrainable_logs.in_groups_of(3).each do |group| %>
-        <div class="row">
-          <%= render group.reject(&:nil?) %>
-        </div>
-      <% end %>
-    </div>
+<% @training_logs.in_groups_of(3).each do |group| %>
+  <div class="row">
+    <%= render group.reject(&:nil?) %>
   </div>
+<% end %>
 
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#claimed" aria-expanded="false" aria-controls="claimed">Trained Logs (<%= @trained_logs.size %>)</a>
-      </h4>
-    </div>
-    <div id="claimed" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
-      <% @trained_logs.in_groups_of(3).each do |group| %>
-        <div class="row">
-          <%= render group.reject(&:nil?) %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= will_paginate @training_logs, renderer: Pagination::Bootstrap4Renderer, link_path: training_logs_path(log_type: params[:log_type]) %>

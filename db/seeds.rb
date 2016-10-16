@@ -1,53 +1,66 @@
 # rubocop:disable Rails/Output
-domains = %w(google.ca google.com google.jp)
-queries = %w(technology)
-statuses = %w(untrained trained claimed).cycle
 
-domains.each do |domain|
-  status = statuses.next
-  puts "Creating training_log for #{domain} with state #{status}"
-  TrainingLog.create(
-    root_domain: domain,
-    url: "https://#{domain}/path",
-    trained_status: status
-  )
+def create_user
+  user_params = { email: 'email@example.com', password: 'password', password_confirmation: 'password' }
+  puts "Making a default user - #{user_params}"
+  User.create(user_params)
 end
 
-queries.each do |query|
-  puts "Creating ScrapeQuery with query #{query}"
-  scrape_query = ScrapeQuery.find_or_create_by(query: 'technology')
+def create_untrained_logs(scrape_query)
+  urls = [
+    "http://www.jdpower.com/press-releases/2016-streaming-music-satisfaction-study",
+    "http://www.itechpost.com/articles/33077/20160926/why-apples-new-ios-10-safe-backup-issues-security-risks.htm",
+    "http://www.teenvogue.com/story/how-to-use-apple-iphone-7",
+    "http://blog.elcomsoft.com/2016/09/ios-10-security-weakness-discovered-backup-passwords-much-easier-to-break/",
+    "http://www.hotnewhiphop.com/drakes-please-forgive-me-premieres-at-midnight-on-apple-music-news.24323.html",
+    "https://www.rt.com/usa/361005-imessage-info-saved-apple/",
+    "http://www.thefader.com/2016/09/26/stream-drake-please-forgive-me",
+    "http://betanews.com/2016/09/26/apple-buys-tuplejump/",
+    "http://www.patentlyapple.com/patently-apple/2016/09/apples-first-store-opened-in-mexico-on-"\
+      "saturday-while-tv-host-bill-maher-takes-a-cheap-shot-at-apple-fans.html"
+  ]
+  statuses = %w(untrained untrainable claimed).cycle
 
-  domains.each do |domain|
-    puts "Creating news_articles for #{domain}"
-    3.times do |i|
-      scrape_query.news_articles.create!(
-        author: 'author',
-        body: 'body text goes here',
-        description: (['description goes here'] * (1..20).to_a.sample).to_sentence,
-        keywords: 'keywords_1,keywords_2',
-        section: 'section',
-        datetime: DateTime.now.utc,
-        title: "Title for #{domain}",
-        root_domain: domain,
-        url: "https://#{domain}/path/#{i}"
-      )
+  urls.each do |url|
+    status = statuses.next
+    domain = url.match(%r{https?://([[a-z]+\.]+[a-z]+).*})[1]
+    puts "Creating training_log for #{url} with state #{status}"
+    TrainingLog.create(
+      root_domain: domain,
+      url: url,
+      trained_status: status,
+      scrape_query_id: scrape_query.id
+    )
+  end
+end
+
+def create_domains
+  domains = YAML.load_file(Rails.root.join('db', 'trained.yml'))['domains']
+  domains.each do |domain, entries|
+    d = Domain.new(root_domain: domain)
+    d.save(validate: false)
+
+    entries.each do |entry|
+      d.domain_entries.create(entry)
     end
   end
 end
 
-data_types = NewsScraper.configuration.scrape_patterns['data_types']
-%w(shopify.ca).each do |domain|
-  puts "Making a domain entry for #{domain}"
-  domain_entries_attributes = data_types.collect do |data_type|
-    {
-      data_type: data_type,
-      method: 'css',
-      pattern: '.div'
-    }
+def create_trained_logs(query)
+  trained = YAML.load_file(Rails.root.join('db', 'trained.yml'))
+  trained_logs = trained['training_logs']
+  news_articles = trained['articles']
+  trained_logs.each do |log|
+    t = query.training_logs.create(log)
+    article_hash = news_articles.detect { |a| a['url'] == t.url }
+    a = NewsArticle.new(article_hash)
+    a.training_log = t
+    a.save
   end
-  Domain.create(root_domain: domain, domain_entries_attributes: domain_entries_attributes)
 end
 
-user_params = { email: 'email@example.com', password: 'password', password_confirmation: 'password' }
-puts "Making a default user - #{user_params}"
-User.create(user_params)
+scrape_query = ScrapeQuery.find_or_create_by(query: 'apple')
+create_user
+create_untrained_logs(scrape_query)
+create_domains
+create_trained_logs(scrape_query)

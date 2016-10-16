@@ -17,6 +17,21 @@ class TrainingLog < ApplicationRecord
 
   after_create :transformed_data # Sets the transformed data in redis
 
+  def self.logs(log_type)
+    case log_type.downcase
+    when 'untrained'
+      untrained
+    when 'claimed'
+      claimed
+    when 'trained'
+      trained
+    when 'untrainable'
+      untrainable
+    else
+      untrained
+    end
+  end
+
   def trained?
     trained_status == 'trained'
   end
