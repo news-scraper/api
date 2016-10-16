@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016201924) do
+ActiveRecord::Schema.define(version: 20161016232722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,8 @@ ActiveRecord::Schema.define(version: 20161016201924) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.integer  "scrape_query_id"
+    t.float    "completeness",    default: 0.0
+    t.index ["completeness"], name: "index_training_logs_on_completeness", using: :btree
     t.index ["root_domain", "trained_status"], name: "index_training_logs_on_root_domain_and_trained_status", using: :btree
     t.index ["root_domain"], name: "index_training_logs_on_root_domain", using: :btree
     t.index ["scrape_query_id"], name: "index_training_logs_on_scrape_query_id", using: :btree

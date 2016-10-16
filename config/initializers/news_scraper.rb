@@ -22,7 +22,7 @@ NewsScraper.configure do |config|
     configuration['domains'] = Domain.domain_hash
 
     # Add to Presets
-    data_type_hashes = DomainEntry.all.group_by(&:data_type)
+    data_type_hashes = DomainEntry.all.group_by(&:data_type) || {}
     @default_configuration['data_types'].each do |dt|
       gem_presets = @default_configuration['presets'][dt].dup
       db_presets = data_type_hashes[dt].each_with_object({}) do |entry, acc|

@@ -5,7 +5,7 @@ class TrainingLogsController < ApplicationController
     params[:log_type] ||= 'untrained'
     @training_logs = TrainingLog.logs(params[:log_type])
                                 .paginate(page: params[:page])
-                                .order(root_domain: :desc)
+                                .order(completeness: :desc)
   end
 
   def show

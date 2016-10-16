@@ -66,7 +66,9 @@ class TrainingLog < ApplicationRecord
       url: url,
       payload: http_request(url).body
     ).transform
-    Api::Application::Redis.set("training-#{id}-transformed", transformed_data.to_json)
+    Api::Application::Redis.set(transformed_data_redis_key, transformed_data.to_json)
+
+    update_attributes(completeness: num_options_predefined.to_f / num_options_available)
     transformed_data
   end
 
