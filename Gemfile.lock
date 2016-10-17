@@ -41,9 +41,9 @@ GIT
 
 GIT
   remote: git@github.com:news-scraper/news_scraper.git
-  revision: 583d88ad535b0695ac849c5824a8c37ab088947b
+  revision: eccccc0a2fefee9631c75001b8bc6f82a74090b4
   specs:
-    news_scraper (1.1.1)
+    news_scraper (1.1.2)
       highscore (~> 1.2.0, >= 1.2.0)
       htmlbeautifier (~> 1.1, >= 1.1.1)
       httparty (~> 0.14, >= 0.14.0)
