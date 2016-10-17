@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: git@github.com:news-scraper/news_scraper.git
-  revision: eccccc0a2fefee9631c75001b8bc6f82a74090b4
+  revision: 3ee2ea9590d081ffb8e98120b2e1344dec88a15e
   specs:
     news_scraper (1.1.2)
       highscore (~> 1.2.0, >= 1.2.0)
