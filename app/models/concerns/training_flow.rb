@@ -110,10 +110,14 @@ module TrainingFlow
       return options['og'] if options.key?('og') && options['og']['data'].present?
       return options['html'] if options.key?('html') && options['html']['data'].present?
     when 'datetime'
-      # Choose the first one which parses properly
-      opt = options.detect { |_, o| Time.zone.parse(o['data']) }
-      return nil unless opt
-      opt.last
+      begin
+        # Choose the first one which parses properly
+        opt = options.detect { |_, o| Time.zone.parse(o['data']) }
+        return nil unless opt
+        opt.last
+      rescue
+        false
+      end
     end
   end
 
