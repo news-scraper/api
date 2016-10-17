@@ -38,7 +38,7 @@ class TrainingLogTest < ActiveSupport::TestCase
 
   test "clear_transformed_data! clears key" do
     log = training_logs(:untrained)
-    Api::Application::Redis.set(log.clear_transformed_data, '1234')
+    Api::Application::Redis.set(log.transformed_data_redis_key, '1234')
     log.clear_transformed_data!
     assert_nil Api::Application::Redis.get(log.transformed_data_redis_key)
   end
