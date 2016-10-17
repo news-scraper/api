@@ -3,7 +3,7 @@ class TrainingLogRefreshJob < ApplicationJob
 
   def perform(args)
     training_log = TrainingLog.find(args[:training_log_id])
-    Api::Application::Redis.set(training_log.transformed_data_redis_key, nil)
+    training_log.clear_transformed_data!
     training_log.transformed_data
   end
 end

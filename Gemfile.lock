@@ -232,6 +232,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mustermann (1.0.0.beta2)
+    namae (0.11.0)
     nesty (1.0.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -391,6 +392,7 @@ DEPENDENCIES
   letsencrypt_plugin
   listen (~> 3.0.5)
   mocha
+  namae
   news_scraper!
   pg
   pry-byebug

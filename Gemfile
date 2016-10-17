@@ -8,6 +8,9 @@ gem 'turbolinks', '~> 5'
 gem 'will_paginate', '~> 3.1.0'
 gem 'blazer', git: 'git@github.com:jules2689/blazer.git'
 
+# Heuristics
+gem 'namae'
+
 # Assets
 gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'

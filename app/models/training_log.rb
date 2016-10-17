@@ -1,5 +1,7 @@
 class TrainingLog < ApplicationRecord
   include NewsScraper::ExtractorsHelpers
+  include TrainingFlow
+
   belongs_to :scrape_query
   has_many :news_articles, foreign_key: :root_domain, primary_key: :root_domain
 
@@ -46,34 +48,6 @@ class TrainingLog < ApplicationRecord
 
   def untrainable?
     trained_status == 'untrainable'
-  end
-
-  def num_options_predefined
-    transformed_data.except('url', 'root_domain').sum do |_, options|
-      options.any? { |_, vals| vals['data'].present? } ? 1 : 0
-    end
-  end
-
-  def num_options_available
-    transformed_data.except('url', 'root_domain').keys.count
-  end
-
-  def transformed_data
-    data = Api::Application::Redis.get(transformed_data_redis_key)
-    return JSON.parse(data) if data.present?
-
-    transformed_data = NewsScraper::Transformers::TrainerArticle.new(
-      url: url,
-      payload: http_request(url).body
-    ).transform
-    Api::Application::Redis.set(transformed_data_redis_key, transformed_data.to_json)
-
-    update_attributes(completeness: num_options_predefined.to_f / num_options_available)
-    transformed_data
-  end
-
-  def transformed_data_redis_key
-    "training-#{id}-transformed"
   end
 
   class << self
