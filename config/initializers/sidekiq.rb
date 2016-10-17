@@ -18,6 +18,7 @@ if !Rails.env.production?
   Sidekiq.configure_server do |config|
     config.redis = { url: 'redis://localhost:6379/12' }
     Sidekiq::Cron::Job.load_from_hash(schedule)
+    config.failures_max_count = 5000
   end
 else
   Sidekiq.configure_client do |config|
