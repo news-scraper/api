@@ -12,10 +12,11 @@ class TrainingLog < ApplicationRecord
     message: '%{value} is not a valid trained status'
   }
 
-  scope :untrained, -> { where(trained_status: 'untrained') }
-  scope :claimed, -> { where(trained_status: 'claimed') }
-  scope :trained, -> { where(trained_status: 'trained') }
-  scope :untrainable, -> { where(trained_status: 'untrainable') }
+  scope :untrained,              -> { where(trained_status: 'untrained') }
+  scope :claimed,                -> { where(trained_status: 'claimed') }
+  scope :trained,                -> { where(trained_status: 'trained') }
+  scope :automatically_trained,  -> { where(trained_status: 'automatically_trained') }
+  scope :untrainable,            -> { where(trained_status: 'untrainable') }
 
   after_create :transformed_data # Sets the transformed data in redis
 
@@ -36,6 +37,10 @@ class TrainingLog < ApplicationRecord
 
   def trained?
     trained_status == 'trained'
+  end
+
+  def automatically_trained?
+    trained_status == 'automatically_trained'
   end
 
   def claimed?
@@ -63,9 +68,13 @@ class TrainingLog < ApplicationRecord
       where(root_domain: root_domain).update(trained_status: 'untrainable')
     end
 
-    def train!(root_domain)
+    def train!(root_domain, trained_status = 'trained')
       ScrapeDomainJob.perform_later(root_domain: root_domain)
-      where(root_domain: root_domain).update(trained_status: 'trained')
+      where(root_domain: root_domain).update(trained_status: trained_status)
+    end
+
+    def auto_train!(root_domain)
+      train!(root_domain, 'automatically_trained')
     end
   end
 end

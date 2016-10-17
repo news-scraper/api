@@ -47,7 +47,7 @@ module TrainingFlow
     return unless domain_entries
 
     domain = Domain.create(root_domain: root_domain, domain_entries_attributes: domain_entries)
-    TrainingLog.train!(root_domain) if domain.persisted?
+    TrainingLog.auto_train!(root_domain) if domain.persisted?
   end
 
   def best_options_for_domain_entries

@@ -1,7 +1,7 @@
-<% content_for :header_title do %><%= params[:log_type].capitalize %> Training Logs<% end %>
+<% content_for :header_title do %><%= params[:log_type].humanize %> Training Logs<% end %>
 
 <nav class="nav nav-inline">
-  <% %w(untrained claimed trained untrainable).each do |log_type| %>
+  <% %w(untrained claimed trained automatically_trained untrainable).each do |log_type| %>
     <%= link_to log_type, training_logs_path(log_type: log_type), class: 'nav-link' + (log_type == params[:log_type] ? ' active' : '') %>
   <% end %>
 </nav>
