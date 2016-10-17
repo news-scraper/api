@@ -26,6 +26,10 @@ module TrainingFlow
     Api::Application::Redis.set(transformed_data_redis_key, nil)
   end
 
+  def transformed_data_redis_key
+    "training-#{id}-transformed"
+  end
+
   private
 
   def fetch_transformed_data
@@ -119,9 +123,5 @@ module TrainingFlow
         false
       end
     end
-  end
-
-  def transformed_data_redis_key
-    "training-#{id}-transformed"
   end
 end
