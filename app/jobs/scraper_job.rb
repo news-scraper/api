@@ -13,7 +13,7 @@ class ScraperJob < ApplicationJob
         Rails.logger.error "#{a.url} returned an error: #{a.error_code}-#{a.message}"
       else
         Rails.logger.info "Creating article for #{a[:url]}"
-        if TrainingLog.exists?(root_domain: a[:root_domain])
+        unless TrainingLog.exists?(root_domain: a[:root_domain], url: a[:url])
           Rails.logger.error "TrainingLog somehow didn't exist for #{a[:root_domain]}"
           find_or_create_log(
             url: a[:url],
