@@ -46,5 +46,7 @@ class ScraperJob < ApplicationJob
       end
       TrainingLog.create!(params)
     end
+  rescue ActiveRecord::RecordNotUnique
+    TrainingLog.find_by(url: url)
   end
 end
