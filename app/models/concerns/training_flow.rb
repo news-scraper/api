@@ -52,8 +52,7 @@ module TrainingFlow
 
   def best_options_for_domain_entries
     transformed_data.except('url', 'root_domain').each_with_object([]) do |(option, options), best_options|
-      best_option = log.send(:choose_best_option, option, options)
-      puts option + " " + best_option.to_s
+      best_option = choose_best_option(option, options)
       return nil unless best_option # If any of them doesn't have a best option, then bail
       best_options << {
         data_type: option,
