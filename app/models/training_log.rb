@@ -30,6 +30,8 @@ class TrainingLog < ApplicationRecord
       trained
     when 'untrainable'
       untrainable
+    when 'automatically_trained'
+      automatically_trained
     else
       untrained
     end
